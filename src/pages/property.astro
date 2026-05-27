@@ -1,0 +1,306 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Icon from '../components/Icon.astro';
+---
+
+<Layout
+  title="Property & Accommodation | Mitraay Resort"
+  description="Cottages, dormitories, treehouse for 22–28 near Raigad Fort. Open-air pavilion, yoga deck, farm, and bonfire area."
+  ogImage="/images/hero-aerial-property-overview.jpg"
+>
+
+  <!-- HERO -->
+  <section class="relative h-[70vh] min-h-[500px] flex items-end overflow-hidden">
+    <div class="absolute inset-0">
+      <img
+        src="/images/hero-aerial-property-overview.jpg"
+        alt="Aerial overview of Mitraay Agro Resort property and grounds"
+        class="w-full h-full object-cover"
+      />
+      <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-black/10"></div>
+    </div>
+    <div class="relative z-10 pb-20 px-6 lg:px-12 max-w-7xl mx-auto w-full">
+      <span class="font-['Caveat'] text-[#F5B04A] text-xl">The property</span>
+      <h1 id="prop-h1" class="font-['Playfair_Display'] text-5xl md:text-7xl font-bold text-white mt-2 leading-tight">
+        Where you'll stay.
+      </h1>
+      <p id="prop-sub" class="text-white/80 text-xl mt-4 max-w-xl">
+        Built for groups. Designed for nature.
+      </p>
+    </div>
+  </section>
+
+  <!-- ACCOMMODATION OVERVIEW -->
+  <section class="py-20 px-6 lg:px-12 bg-[#F7F0E6]">
+    <div class="max-w-7xl mx-auto">
+      <div class="text-center mb-16">
+        <p class="text-[10px] tracking-[0.18em] uppercase text-[#8B7355]/60 mb-4 font-['DM_Sans']">A project by Vedbhoomi Eco Village</p>
+        <h2 class="font-['Playfair_Display'] text-4xl font-bold text-[#2C1F0E]" id="acc-h">Accommodation</h2>
+        <p class="text-[#4A3728] mt-4 text-lg">Total capacity: 22–28 guests across all room types.</p>
+      </div>
+
+      <div class="space-y-16">
+        <!-- Cottages -->
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center prop-row">
+          <div class="grid grid-cols-2 gap-4">
+            <div class="overflow-hidden rounded-xl shadow-lg">
+              <img src="/images/accommodation-hut-veranda.jpg" alt="Hut veranda with garden view at Mitraay Resort" class="w-full h-56 object-cover hover:scale-105 transition-transform duration-700" />
+            </div>
+            <div class="overflow-hidden rounded-xl shadow-lg mt-6">
+              <img src="/images/accommodation-prefab-interior.jpg" alt="Interior of prefab accommodation at Mitraay Resort" class="w-full h-56 object-cover hover:scale-105 transition-transform duration-700" />
+            </div>
+          </div>
+          <div>
+            <span class="font-['Caveat'] text-[#E8871A] text-xl">Private stay</span>
+            <h3 class="font-['Playfair_Display'] text-3xl font-bold text-[#2C1F0E] mt-2 mb-5">Cottages</h3>
+            <p class="text-[#4A3728] leading-relaxed mb-5">Our cottages offer private rooms for pairs or small groups within your party. Balconies with garden and farm views, natural ventilation, and comfortable beds.</p>
+            <ul class="space-y-2 text-sm text-[#4A3728]">
+              {['Private balcony with garden views', 'Natural cross-ventilation', 'Attached bathroom', 'Ideal for leaders, teachers, or seniors'].map(f => (
+                <li class="flex items-center gap-2"><span class="text-[#3A5C3A]">✓</span> {f}</li>
+              ))}
+            </ul>
+          </div>
+        </div>
+
+        <!-- Dormitories -->
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center prop-row">
+          <div class="order-2 lg:order-1">
+            <span class="font-['Caveat'] text-[#E8871A] text-xl">Group bunks</span>
+            <h3 class="font-['Playfair_Display'] text-3xl font-bold text-[#2C1F0E] mt-2 mb-5">Dormitories</h3>
+            <p class="text-[#4A3728] leading-relaxed mb-5">Symmetrical dormitories with laterite-red walls, bunk beds, and ample storage. Built to create a group bonding atmosphere, perfect for student groups and youth teams.</p>
+            <ul class="space-y-2 text-sm text-[#4A3728]">
+              {['Bunk bed setup for groups', 'Distinctive red laterite wall finish', 'Common areas for group gatherings', 'Shared bathrooms, well-maintained'].map(f => (
+                <li class="flex items-center gap-2"><span class="text-[#3A5C3A]">✓</span> {f}</li>
+              ))}
+            </ul>
+          </div>
+          <div class="grid grid-cols-2 gap-4 order-1 lg:order-2">
+            <div class="overflow-hidden rounded-xl shadow-lg mt-6">
+              <img src="/images/accommodation-dorm-interior-red.jpg" alt="Dormitory interior with distinctive red laterite walls at Mitraay Resort" class="w-full h-56 object-cover hover:scale-105 transition-transform duration-700" />
+            </div>
+            <div class="overflow-hidden rounded-xl shadow-lg">
+              <img src="/images/accommodation-dorm-interior-6bed.jpg" alt="Six-bed dormitory interior at Mitraay Resort" class="w-full h-56 object-cover hover:scale-105 transition-transform duration-700" />
+            </div>
+          </div>
+        </div>
+
+        <!-- Treehouse -->
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center prop-row">
+          <div class="grid grid-cols-2 gap-4">
+            <div class="overflow-hidden rounded-xl shadow-lg">
+              <img src="/images/property-wide-treehouse-mountains.jpg" alt="Treehouse with mountain backdrop at Mitraay Resort" class="w-full h-56 object-cover hover:scale-105 transition-transform duration-700" />
+            </div>
+            <div class="overflow-hidden rounded-xl shadow-lg mt-6">
+              <img src="/images/property-treehouse-path-sunrise.jpg" alt="Stone path leading to treehouse at sunrise at Mitraay Resort" class="w-full h-56 object-cover hover:scale-105 transition-transform duration-700" />
+            </div>
+          </div>
+          <div>
+            <span class="font-['Caveat'] text-[#E8871A] text-xl">Most unique</span>
+            <h3 class="font-['Playfair_Display'] text-3xl font-bold text-[#2C1F0E] mt-2 mb-5">Treehouse</h3>
+            <p class="text-[#4A3728] leading-relaxed mb-5">The treehouse is Mitraay's showpiece, a canopy stay surrounded by the farm, accessible via a stone-path walkway. Wake up to birdsong and mist.</p>
+            <ul class="space-y-2 text-sm text-[#4A3728]">
+              {['Canopy-level platform', 'Stone-path entrance', 'Best sunrises on the property', 'Ideal for 2–4 guests'].map(f => (
+                <li class="flex items-center gap-2"><span class="text-[#3A5C3A]">✓</span> {f}</li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- AMENITIES -->
+  <section class="py-16 px-6 lg:px-12 bg-[#EDE3D4]">
+    <div class="max-w-7xl mx-auto">
+      <h2 class="font-['Playfair_Display'] text-4xl font-bold text-[#2C1F0E] text-center mb-12" id="amen-h">Amenities</h2>
+      <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6 text-center">
+        <div class="bg-white rounded-2xl p-5 shadow-sm hover:shadow-md transition-shadow amen-item flex flex-col items-center">
+          <div class="w-12 h-12 rounded-xl bg-[#3A5C3A]/10 flex items-center justify-center mb-3 text-[#3A5C3A]">
+            <Icon name="wifi" class="w-6 h-6" />
+          </div>
+          <p class="text-[#4A3728] text-sm font-medium">WiFi across property</p>
+        </div>
+        <div class="bg-white rounded-2xl p-5 shadow-sm hover:shadow-md transition-shadow amen-item flex flex-col items-center">
+          <div class="w-12 h-12 rounded-xl bg-[#8B7355]/10 flex items-center justify-center mb-3 text-[#8B7355]">
+            <Icon name="car" class="w-6 h-6" />
+          </div>
+          <p class="text-[#4A3728] text-sm font-medium">Free parking</p>
+        </div>
+        <div class="bg-white rounded-2xl p-5 shadow-sm hover:shadow-md transition-shadow amen-item flex flex-col items-center">
+          <div class="w-12 h-12 rounded-xl bg-[#3A5C3A]/10 flex items-center justify-center mb-3 text-[#3A5C3A]">
+            <Icon name="drop" class="w-6 h-6" />
+          </div>
+          <p class="text-[#4A3728] text-sm font-medium">Hot water in all rooms</p>
+        </div>
+        <div class="bg-white rounded-2xl p-5 shadow-sm hover:shadow-md transition-shadow amen-item flex flex-col items-center">
+          <div class="w-12 h-12 rounded-xl bg-[#8B7355]/10 flex items-center justify-center mb-3 text-[#8B7355]">
+            <Icon name="house" class="w-6 h-6" />
+          </div>
+          <p class="text-[#4A3728] text-sm font-medium">Western washrooms</p>
+        </div>
+        <div class="bg-white rounded-2xl p-5 shadow-sm hover:shadow-md transition-shadow amen-item flex flex-col items-center">
+          <div class="w-12 h-12 rounded-xl bg-[#E8871A]/10 flex items-center justify-center mb-3 text-[#E8871A]">
+            <Icon name="utensils" class="w-6 h-6" />
+          </div>
+          <p class="text-[#4A3728] text-sm font-medium">Indoor dining pavilion</p>
+        </div>
+        <div class="bg-white rounded-2xl p-5 shadow-sm hover:shadow-md transition-shadow amen-item flex flex-col items-center">
+          <div class="w-12 h-12 rounded-xl bg-[#3A5C3A]/10 flex items-center justify-center mb-3 text-[#3A5C3A]">
+            <Icon name="music" class="w-6 h-6" />
+          </div>
+          <p class="text-[#4A3728] text-sm font-medium">Open pavilion with sound system</p>
+        </div>
+        <div class="bg-white rounded-2xl p-5 shadow-sm hover:shadow-md transition-shadow amen-item flex flex-col items-center">
+          <div class="w-12 h-12 rounded-xl bg-[#D4A827]/10 flex items-center justify-center mb-3 text-[#D4A827]">
+            <Icon name="mic" class="w-6 h-6" />
+          </div>
+          <p class="text-[#4A3728] text-sm font-medium">Karaoke on request</p>
+        </div>
+        <div class="bg-white rounded-2xl p-5 shadow-sm hover:shadow-md transition-shadow amen-item flex flex-col items-center">
+          <div class="w-12 h-12 rounded-xl bg-[#8B7355]/10 flex items-center justify-center mb-3 text-[#8B7355]">
+            <Icon name="monitor" class="w-6 h-6" />
+          </div>
+          <p class="text-[#4A3728] text-sm font-medium">Large TV for screenings</p>
+        </div>
+        <div class="bg-white rounded-2xl p-5 shadow-sm hover:shadow-md transition-shadow amen-item flex flex-col items-center">
+          <div class="w-12 h-12 rounded-xl bg-[#C0552A]/10 flex items-center justify-center mb-3 text-[#C0552A]">
+            <Icon name="flame" class="w-6 h-6" />
+          </div>
+          <p class="text-[#4A3728] text-sm font-medium">Bonfire area</p>
+        </div>
+        <div class="bg-white rounded-2xl p-5 shadow-sm hover:shadow-md transition-shadow amen-item flex flex-col items-center">
+          <div class="w-12 h-12 rounded-xl bg-[#3A5C3A]/10 flex items-center justify-center mb-3 text-[#3A5C3A]">
+            <Icon name="medkit" class="w-6 h-6" />
+          </div>
+          <p class="text-[#4A3728] text-sm font-medium">First aid on property</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- GALLERY with Lightbox -->
+  <section class="py-16 px-6 lg:px-12 bg-[#F7F0E6]" id="gallery">
+    <div class="max-w-7xl mx-auto">
+      <h2 class="font-['Playfair_Display'] text-4xl font-bold text-[#2C1F0E] text-center mb-12">Photo Gallery</h2>
+      <div class="columns-2 md:columns-3 gap-4 space-y-4">
+        {[
+          { src: '/images/property-pavilion-garden-overhead.jpg', alt: 'Overhead view of pavilion and garden at Mitraay Resort' },
+          { src: '/images/property-pool-water-feature.jpg', alt: 'Pool and water feature at Mitraay Resort' },
+          { src: '/images/property-huts-garden-golden-hour.jpg', alt: 'Stone huts with garden at golden hour at Mitraay Resort' },
+          { src: '/images/property-stone-huts-garden-path.jpg', alt: 'Garden path between stone huts at Mitraay Resort' },
+          { src: '/images/food-thali-overhead-wooden-table.jpg', alt: 'Traditional thali meal overhead view on wooden table at Mitraay Resort' },
+          { src: '/images/property-bullock-cart-sunrise.jpg', alt: 'Heritage bullock cart at sunrise at Mitraay Resort' },
+        ].map((img, i) => (
+          <div
+            class="gallery-thumb break-inside-avoid overflow-hidden rounded-xl cursor-pointer shadow-md hover:shadow-xl transition-all duration-300 hover:scale-[1.02]"
+            data-src={img.src}
+            data-index={i}
+          >
+            <img src={img.src} alt={img.alt} class="w-full object-cover" />
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Lightbox -->
+  <div id="lightbox" class="fixed inset-0 z-[100] bg-black/90 flex items-center justify-center opacity-0 pointer-events-none transition-opacity duration-300">
+    <button id="lb-close" class="absolute top-6 right-6 text-white text-3xl font-light leading-none hover:text-[#F5B04A] transition-colors">&times;</button>
+    <button id="lb-prev" class="absolute left-4 md:left-10 text-white text-4xl hover:text-[#F5B04A] transition-colors">&#8249;</button>
+    <img id="lb-img" src="" alt="" class="max-w-[90vw] max-h-[85vh] object-contain rounded-xl shadow-2xl" />
+    <button id="lb-next" class="absolute right-4 md:right-10 text-white text-4xl hover:text-[#F5B04A] transition-colors">&#8250;</button>
+  </div>
+
+  <!-- FOOD -->
+  <section class="py-20 px-6 lg:px-12 bg-[#2C1F0E] text-white">
+    <div class="max-w-3xl mx-auto text-center">
+      <span class="font-['Caveat'] text-[#F5B04A] text-2xl">What's on the table</span>
+      <h2 class="font-['Playfair_Display'] text-4xl font-bold mt-3 mb-6 leading-tight">From this farm, to your plate.</h2>
+      <p class="text-white/75 text-lg leading-relaxed mb-4">Every meal at Mitraay is vegetarian: simple, sattvic, and made from what grows here. Rice from the paddy fields, vegetables from the kitchen garden, served fresh in the open dining pavilion.</p>
+      <p class="text-white/75 leading-relaxed mb-4">We don't serve alcohol. What you get instead is silence, clean air, and food that genuinely comes from the land you're staying on.</p>
+      <p class="text-white/55 text-sm">Three meals a day included for all guests. Special dietary needs can be accommodated. Let us know in advance.</p>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="py-20 px-6 bg-[#2C1F0E] text-white text-center">
+    <div class="max-w-xl mx-auto">
+      <span class="font-['Caveat'] text-[#F5B04A] text-2xl">Come experience it</span>
+      <h2 class="font-['Playfair_Display'] text-4xl font-bold mt-3 mb-6">Ready to see it in person?</h2>
+      <p class="text-white/70 mb-10">Send us your dates and group size and we'll confirm availability.</p>
+      <a
+        href="https://wa.me/919112984757?text=Hi%2C%20I%20want%20to%20plan%20a%20group%20trip%20to%20Mitraay%20Resort"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="inline-flex items-center gap-3 bg-[#E8871A] hover:bg-[#C96D0A] text-white px-10 py-4 rounded-full font-semibold text-lg transition-all duration-200 shadow-xl"
+      >
+        Check Availability
+      </a>
+    </div>
+  </section>
+
+</Layout>
+
+<script>
+  import { gsap } from 'gsap';
+  import { ScrollTrigger } from 'gsap/ScrollTrigger';
+  gsap.registerPlugin(ScrollTrigger);
+
+  gsap.set(['#prop-h1', '#prop-sub'], { opacity: 0, y: 30 });
+  gsap.to('#prop-h1', { opacity: 1, y: 0, duration: 0.9, delay: 0.4, ease: 'power3.out' });
+  gsap.to('#prop-sub', { opacity: 1, y: 0, duration: 0.8, delay: 0.65, ease: 'power3.out' });
+
+  document.querySelectorAll('.prop-row').forEach(el => {
+    gsap.from(el, {
+      scrollTrigger: { trigger: el, start: 'top 80%' },
+      y: 30, opacity: 0, duration: 1, ease: 'power3.out',
+    });
+  });
+
+  document.querySelectorAll('.amen-item').forEach((el, i) => {
+    gsap.from(el, {
+      scrollTrigger: { trigger: el, start: 'top 90%' },
+      y: 20, opacity: 0, duration: 0.6, delay: i * 0.08, ease: 'power2.out',
+    });
+  });
+
+  // Lightbox
+  const galleryImgs = Array.from(document.querySelectorAll('.gallery-thumb')) as HTMLElement[];
+  const lightbox = document.getElementById('lightbox')!;
+  const lbImg = document.getElementById('lb-img') as HTMLImageElement;
+  const lbClose = document.getElementById('lb-close')!;
+  const lbPrev = document.getElementById('lb-prev')!;
+  const lbNext = document.getElementById('lb-next')!;
+  let current = 0;
+
+  const srcs = galleryImgs.map(el => el.dataset.src || '');
+
+  function openLightbox(idx: number) {
+    current = idx;
+    lbImg.src = srcs[current];
+    lbImg.alt = galleryImgs[current].querySelector('img')?.alt || '';
+    lightbox.classList.remove('opacity-0', 'pointer-events-none');
+    lightbox.classList.add('opacity-100');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeLightbox() {
+    lightbox.classList.add('opacity-0', 'pointer-events-none');
+    lightbox.classList.remove('opacity-100');
+    document.body.style.overflow = '';
+  }
+
+  galleryImgs.forEach((el, i) => el.addEventListener('click', () => openLightbox(i)));
+
+  lbClose.addEventListener('click', closeLightbox);
+  lightbox.addEventListener('click', e => { if (e.target === lightbox) closeLightbox(); });
+
+  lbPrev.addEventListener('click', () => { current = (current - 1 + srcs.length) % srcs.length; lbImg.src = srcs[current]; });
+  lbNext.addEventListener('click', () => { current = (current + 1) % srcs.length; lbImg.src = srcs[current]; });
+
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape') closeLightbox();
+    if (e.key === 'ArrowLeft') { current = (current - 1 + srcs.length) % srcs.length; lbImg.src = srcs[current]; }
+    if (e.key === 'ArrowRight') { current = (current + 1) % srcs.length; lbImg.src = srcs[current]; }
+  });
+</script>

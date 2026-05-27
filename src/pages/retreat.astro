@@ -1,0 +1,269 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Icon from '../components/Icon.astro';
+---
+
+<Layout
+  title="Retreat Venue for Hire | Mitraay Resort"
+  description="Hire Mitraay as your retreat venue. Bamboo pavilion, farm, river, silence for 22–28. Bring your group. We provide the space."
+  ogImage="/images/retreat-meditation-sunrise-wide.jpg"
+>
+
+  <!-- HERO -->
+  <section class="relative h-[80vh] min-h-[560px] flex items-end overflow-hidden">
+    <div class="absolute inset-0">
+      <img
+        src="/images/retreat-meditation-sunrise-wide.jpg"
+        alt="Wide view of sunrise meditation at Mitraay Resort"
+        class="w-full h-full object-cover"
+      />
+      <div class="absolute inset-0 bg-gradient-to-t from-black/75 via-black/30 to-black/10"></div>
+    </div>
+    <div class="relative z-10 pb-24 px-6 lg:px-12 max-w-7xl mx-auto w-full">
+      <span class="font-['Caveat'] text-[#F5B04A] text-xl">For yoga teachers, wellness coaches & guides</span>
+      <h1 id="ret-h1" class="font-['Playfair_Display'] text-5xl md:text-7xl font-bold text-white mt-2 leading-tight">
+        Your retreat.<br />Our land.
+      </h1>
+      <p id="ret-sub" class="text-white/80 text-xl mt-5 max-w-2xl leading-relaxed">
+        Bring your group, your curriculum, your energy.<br class="hidden md:block" />
+        We provide the space, and nothing else gets in the way.
+      </p>
+    </div>
+  </section>
+
+  <!-- WHO THIS IS FOR -->
+  <section class="py-20 px-6 lg:px-12 bg-[#F7F0E6]">
+    <div class="max-w-7xl mx-auto">
+      <div class="text-center mb-14">
+        <span class="font-['Caveat'] text-[#E8871A] text-2xl">Who this is for</span>
+        <h2 class="font-['Playfair_Display'] text-4xl font-bold text-[#2C1F0E] mt-3">
+          You run the program. We host the group.
+        </h2>
+        <p class="text-[#4A3728] text-lg mt-4 max-w-2xl mx-auto leading-relaxed">
+          Mitraay is a private venue, not a retreat company. We don't design or lead programs. We give facilitators a beautiful, distraction-free setting where their work can land differently.
+        </p>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+
+        <div class="bg-white rounded-2xl p-8 shadow-sm hover:shadow-lg transition-shadow duration-300 ret-card">
+          <div class="w-14 h-14 rounded-xl bg-[#3A5C3A]/10 flex items-center justify-center mb-6 text-[#3A5C3A]">
+            <Icon name="meditation" class="w-7 h-7" />
+          </div>
+          <h3 class="font-['Playfair_Display'] text-2xl font-bold text-[#2C1F0E] mb-4">Wellness Retreats</h3>
+          <p class="text-[#4A3728] leading-relaxed mb-4">Yoga teachers, somatic practitioners, breathwork facilitators: the bamboo pavilion, the river, and the morning mist create conditions for deep work.</p>
+          <p class="text-[#4A3728] text-sm italic">Morning yoga, silent meals, outdoor sessions, healing baths in the river.</p>
+        </div>
+
+        <div class="bg-white rounded-2xl p-8 shadow-sm hover:shadow-lg transition-shadow duration-300 ret-card">
+          <div class="w-14 h-14 rounded-xl bg-[#D4A827]/10 flex items-center justify-center mb-6 text-[#D4A827]">
+            <Icon name="mandala" class="w-7 h-7" />
+          </div>
+          <h3 class="font-['Playfair_Display'] text-2xl font-bold text-[#2C1F0E] mb-4">Spiritual Retreats</h3>
+          <p class="text-[#4A3728] leading-relaxed mb-4">Meditation leaders, spiritual guides, devotional groups: the silence here is real. No roads. No noise. The Sahyadri holds the space.</p>
+          <p class="text-[#4A3728] text-sm italic">Satsang, mantra practice, contemplative walks, fasting-friendly vegetarian food.</p>
+        </div>
+
+        <div class="bg-white rounded-2xl p-8 shadow-sm hover:shadow-lg transition-shadow duration-300 ret-card">
+          <div class="w-14 h-14 rounded-xl bg-[#E8871A]/10 flex items-center justify-center mb-6 text-[#E8871A]">
+            <Icon name="people" class="w-7 h-7" />
+          </div>
+          <h3 class="font-['Playfair_Display'] text-2xl font-bold text-[#2C1F0E] mb-4">Group Getaways</h3>
+          <p class="text-[#4A3728] leading-relaxed mb-4">Father-daughter trips, women's circles, close-knit friend groups: Mitraay is ideal when the connection between people matters more than the itinerary.</p>
+          <p class="text-[#4A3728] text-sm italic">River time, farm mornings, bonfires, cooking together, long uninterrupted dinners.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- WHAT'S INCLUDED -->
+  <section class="py-20 px-6 lg:px-12 bg-[#EDE3D4]">
+    <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+      <div id="ret-text">
+        <span class="font-['Caveat'] text-[#E8871A] text-2xl">What's included</span>
+        <h2 class="font-['Playfair_Display'] text-4xl font-bold text-[#2C1F0E] mt-3 mb-8 leading-tight">
+          The complete container for your group.
+        </h2>
+        <div class="space-y-4">
+          {[
+            { icon: 'house', label: 'Private exclusive property', desc: 'One group at a time. No strangers, no shared spaces with other guests.' },
+            { icon: 'people', label: 'Accommodation for 22–28', desc: 'Cottages, dormitories, and a treehouse across the property.' },
+            { icon: 'sun', label: 'Open bamboo pavilion', desc: 'A large open-sided structure for sessions, movement, and circle work.' },
+            { icon: 'leaf', label: 'Working farm', desc: 'Paddy fields, seasonal crops, and morning farm walks if your group wants them.' },
+            { icon: 'waves', label: 'River access', desc: 'The river runs along the property. Swimming, sitting, bathing. It\'s there.' },
+            { icon: 'utensils', label: 'Vegetarian meals', desc: 'Three simple, sattvic, farm-fresh meals each day, included for all guests.' },
+            { icon: 'music', label: 'Pavilion with sound system & large TV', desc: 'The bamboo pavilion is equipped with a sound system and large TV for presentations, screenings, and group sessions.' },
+            { icon: 'mic', label: 'Karaoke on request', desc: 'Karaoke system available for group evenings — a popular close to a long retreat day.' },
+            { icon: 'flame', label: 'Bonfire area', desc: 'A dedicated bonfire space for evening circles, storytelling, and star-gazing.' },
+          ].map(item => (
+            <div class="flex gap-4 items-start">
+              <div class="w-9 h-9 rounded-lg bg-[#3A5C3A]/10 flex items-center justify-center flex-shrink-0 mt-0.5 text-[#3A5C3A]">
+                <Icon name={item.icon} class="w-4 h-4" />
+              </div>
+              <div>
+                <p class="font-semibold text-[#2C1F0E] text-sm">{item.label}</p>
+                <p class="text-[#4A3728] text-sm leading-relaxed">{item.desc}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+        <p class="text-[#4A3728] text-sm mt-6 leading-relaxed">Meals are vegetarian and grown on the property, timed around your program.</p>
+      </div>
+      <div class="overflow-hidden rounded-2xl shadow-2xl" id="ret-img-main">
+        <img
+          src="/images/retreat-workshop-pavilion-group.jpg"
+          alt="Group workshop in the open bamboo pavilion at Mitraay Resort"
+          class="w-full h-[520px] object-cover hover:scale-105 transition-transform duration-700"
+        />
+      </div>
+    </div>
+  </section>
+
+  <!-- THE FACILITATOR'S SPACE -->
+  <section class="py-20 px-6 lg:px-12 bg-[#F7F0E6]">
+    <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+      <div class="overflow-hidden rounded-2xl shadow-2xl" id="ret-treehouse-img">
+        <img
+          src="/images/property-treehouse-path-sunrise.jpg"
+          alt="Stone path leading to the treehouse at sunrise at Mitraay Resort"
+          class="w-full h-[420px] object-cover hover:scale-105 transition-transform duration-700"
+        />
+      </div>
+      <div id="ret-treehouse-text">
+        <span class="font-['Caveat'] text-[#E8871A] text-2xl">For the facilitator</span>
+        <h2 class="font-['Playfair_Display'] text-4xl font-bold text-[#2C1F0E] mt-3 mb-6 leading-tight">
+          The treehouse is yours.
+        </h2>
+        <p class="text-[#4A3728] text-lg leading-relaxed mb-5">
+          When you bring your group here, the treehouse is reserved for you: the teacher, guide, or organiser. A private canopy space above the farm, reached by a stone-path walkway, with the best sunrise on the property.
+        </p>
+        <p class="text-[#4A3728] leading-relaxed">
+          A place to prepare, rest, and hold the energy of your group, separate from the dormitories and cottages where your participants stay.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- A DAY AT MITRAAY -->
+  <section class="py-20 px-6 lg:px-12 bg-[#EDE3D4]">
+    <div class="max-w-7xl mx-auto">
+      <div class="text-center mb-14">
+        <span class="font-['Caveat'] text-[#E8871A] text-2xl">A day at Mitraay</span>
+        <h2 class="font-['Playfair_Display'] text-4xl font-bold text-[#2C1F0E] mt-3">
+          You set the schedule.<br />We set the stage.
+        </h2>
+        <p class="text-[#4A3728] mt-4 max-w-xl mx-auto leading-relaxed">
+          There's no fixed program here. You decide how each day flows. Below is what the land naturally offers. Use as much or as little as your retreat calls for.
+        </p>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12" id="ret-day-grid">
+        <div class="overflow-hidden rounded-2xl shadow-lg">
+          <img src="/images/retreat-meditation-misty-morning.jpg" alt="Misty morning meditation in the pavilion at Mitraay Resort" class="w-full h-64 object-cover hover:scale-105 transition-transform duration-700" />
+          <div class="bg-white p-5">
+            <p class="font-['Playfair_Display'] font-semibold text-[#2C1F0E]">Morning</p>
+            <p class="text-[#4A3728] text-sm mt-1">Pavilion sessions, sunrise river baths, silent farm walks, chai on the terrace</p>
+          </div>
+        </div>
+        <div class="overflow-hidden rounded-2xl shadow-lg">
+          <img src="/images/retreat-yoga-pavilion-rain.jpg" alt="Yoga practice in the open pavilion during rain at Mitraay Resort" class="w-full h-64 object-cover hover:scale-105 transition-transform duration-700" />
+          <div class="bg-white p-5">
+            <p class="font-['Playfair_Display'] font-semibold text-[#2C1F0E]">Afternoon</p>
+            <p class="text-[#4A3728] text-sm mt-1">Deep practice sessions, integration time, cooking together, farm exploration</p>
+          </div>
+        </div>
+        <div class="overflow-hidden rounded-2xl shadow-lg">
+          <img src="/images/retreat-group-monsoon-walk-monk.jpg" alt="Group on a contemplative walk in the monsoon at Mitraay Resort" class="w-full h-64 object-cover hover:scale-105 transition-transform duration-700" />
+          <div class="bg-white p-5">
+            <p class="font-['Playfair_Display'] font-semibold text-[#2C1F0E]">Evening</p>
+            <p class="text-[#4A3728] text-sm mt-1">Sunset circles, community bonfire, star-gazing, unstructured group time</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="relative py-28 px-6 overflow-hidden">
+    <div class="absolute inset-0">
+      <img src="/images/hero-meditation-pavilion-sunset.jpg" alt="Meditation pavilion at sunset at Mitraay Resort" class="w-full h-full object-cover" />
+      <div class="absolute inset-0 bg-[#2C1F0E]/65"></div>
+    </div>
+    <div class="relative z-10 text-center text-white max-w-2xl mx-auto" id="ret-cta">
+      <span class="font-['Caveat'] text-[#F5B04A] text-2xl">Ready to bring your group here?</span>
+      <h2 class="font-['Playfair_Display'] text-4xl md:text-5xl font-bold mt-3 mb-6 leading-tight">
+        Your retreat. Our land.
+      </h2>
+      <p class="text-white/75 text-lg mb-10">
+        Tell us your dates, group size, and the kind of retreat you run. We'll confirm availability and answer your questions.
+      </p>
+      <a
+        href="https://wa.me/919112984757?text=Hi%2C%20I%20want%20to%20enquire%20about%20hiring%20Mitraay%20as%20a%20retreat%20venue"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="inline-flex items-center gap-3 bg-[#25D366] hover:bg-[#1da851] text-white px-10 py-4 rounded-full font-semibold text-lg transition-all duration-200 shadow-xl"
+      >
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-5 h-5">
+          <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+        </svg>
+        Enquire About Hiring the Venue
+      </a>
+    </div>
+  </section>
+
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Event",
+      "name": "Retreat at Mitraay Agro Resort",
+      "description": "Yoga, wellness, and spiritual retreat venue for hire near Raigad Fort, Maharashtra. Private exclusive property for groups of 22–28.",
+      "url": "https://mitraayresort.in/retreat",
+      "image": "https://mitraayresort.in/images/hero-meditation-pavilion-sunset.jpg",
+      "eventStatus": "https://schema.org/EventScheduled",
+      "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+      "location": {
+        "@type": "Place",
+        "name": "Mitraay Agro Resort",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Raigad",
+          "addressRegion": "Maharashtra",
+          "addressCountry": "IN"
+        }
+      },
+      "organizer": {
+        "@type": "Organization",
+        "name": "Your retreat facilitator"
+      }
+    }
+  </script>
+
+</Layout>
+
+<script>
+  import { gsap } from 'gsap';
+  import { ScrollTrigger } from 'gsap/ScrollTrigger';
+  gsap.registerPlugin(ScrollTrigger);
+
+  gsap.set(['#ret-h1', '#ret-sub'], { opacity: 0, y: 30 });
+  gsap.timeline({ delay: 0.3, defaults: { ease: 'power3.out' } })
+    .to('#ret-h1',  { opacity: 1, y: 0, duration: 0.9 })
+    .to('#ret-sub', { opacity: 1, y: 0, duration: 0.8 }, '-=0.5');
+
+  document.querySelectorAll('.ret-card').forEach((el, i) => {
+    gsap.from(el, {
+      scrollTrigger: { trigger: el, start: 'top 88%', once: true },
+      y: 30, opacity: 0, duration: 0.7, delay: i * 0.12, ease: 'power2.out',
+    });
+  });
+
+  gsap.from('#ret-text',           { scrollTrigger: { trigger: '#ret-text',           start: 'top 80%', once: true }, x: -40, opacity: 0, duration: 1,   ease: 'power3.out' });
+  gsap.from('#ret-img-main',       { scrollTrigger: { trigger: '#ret-img-main',       start: 'top 80%', once: true }, x: 40,  opacity: 0, duration: 1,   ease: 'power3.out' });
+  gsap.from('#ret-treehouse-img',  { scrollTrigger: { trigger: '#ret-treehouse-img',  start: 'top 80%', once: true }, x: -40, opacity: 0, duration: 1,   ease: 'power3.out' });
+  gsap.from('#ret-treehouse-text', { scrollTrigger: { trigger: '#ret-treehouse-text', start: 'top 80%', once: true }, x: 40,  opacity: 0, duration: 1,   ease: 'power3.out' });
+  gsap.from('#ret-day-grid',       { scrollTrigger: { trigger: '#ret-day-grid',       start: 'top 82%', once: true }, y: 30,  opacity: 0, duration: 0.9, ease: 'power2.out' });
+
+  gsap.from('#ret-cta', {
+    scrollTrigger: { trigger: '#ret-cta', start: 'top 80%', once: true },
+    y: 30, opacity: 0, duration: 0.9, ease: 'power3.out',
+  });
+</script>

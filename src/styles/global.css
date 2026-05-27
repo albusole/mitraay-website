@@ -1,0 +1,62 @@
+@import "tailwindcss";
+
+:root {
+  --saffron: #E8871A;
+  --saffron-deep: #C96D0A;
+  --saffron-light: #F5B04A;
+  --terracotta: #C0552A;
+  --ochre: #D4A827;
+  --forest: #3A5C3A;
+  --forest-light: #5A7A4A;
+  --cream: #F7F0E6;
+  --cream-dark: #EDE3D4;
+  --stone: #8B7355;
+  --ink: #2C1F0E;
+  --ink-soft: #4A3728;
+}
+
+html {
+  scroll-behavior: auto;
+}
+
+body {
+  background-color: var(--cream);
+  color: var(--ink);
+  font-family: 'DM Sans', sans-serif;
+  overflow-x: hidden;
+}
+
+h1, h2, h3, h4 {
+  font-family: 'Playfair Display', serif;
+}
+
+.font-accent {
+  font-family: 'Caveat', cursive;
+}
+
+@keyframes wa-pulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.4); }
+  50% { box-shadow: 0 0 0 12px rgba(37, 211, 102, 0); }
+}
+
+.wa-float {
+  animation: wa-pulse 2s ease-in-out infinite;
+}
+
+@keyframes ken-burns {
+  from { transform: scale(1); }
+  to { transform: scale(1.08); }
+}
+
+.ken-burns {
+  animation: ken-burns 8s ease-in-out forwards;
+}
+
+@keyframes scroll-bounce {
+  0%, 100% { transform: translateY(0); opacity: 1; }
+  50% { transform: translateY(8px); opacity: 0.4; }
+}
+
+.scroll-bounce {
+  animation: scroll-bounce 1.6s ease-in-out infinite;
+}
