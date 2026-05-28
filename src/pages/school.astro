@@ -194,14 +194,14 @@ import Icon from '../components/Icon.astro';
   </section>
 
   <!-- BISHOPS CALLOUT -->
-  <section class="bishops-callout">
-    <div class="bishops-inner">
-      <div class="bishops-logo">
-        <img src="/images/partners/bishops.png" alt="Bishop's Co-Ed School, Kalyani Nagar, Pune" />
+  <section style="padding: 3rem 2rem; background: #2C1F0E;">
+    <div style="max-width: 700px; margin: 0 auto; display: flex; align-items: center; gap: 2rem; background: rgba(240,165,0,0.08); border: 1px solid rgba(240,165,0,0.25); border-radius: 8px; padding: 1.75rem 2rem; flex-wrap: wrap;">
+      <div style="background: #ffffff; border-radius: 6px; padding: 10px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+        <img src="/images/partners/bishops.png" alt="Bishop's Co-Ed School, Kalyani Nagar, Pune" style="height: 72px; width: auto; display: block;" />
       </div>
-      <div class="bishops-text">
-        <p class="bishops-name">Bishop's Co-Ed School, Kalyani Nagar, Pune</p>
-        <p class="bishops-detail">40 students, Classes 5 to 10 · 5 teachers · 2 Nights, 3 Days · Full campus exclusive stay</p>
+      <div>
+        <p style="font-family: 'Playfair Display', serif; font-size: 1.1rem; color: #fff; margin: 0 0 0.4rem;">Bishop's Co-Ed School, Kalyani Nagar, Pune</p>
+        <p style="font-family: 'DM Sans', sans-serif; font-size: 0.85rem; color: rgba(255,255,255,0.6); margin: 0;">40 students, Classes 5 to 10 · 5 teachers · 2 Nights, 3 Days · Full campus exclusive stay</p>
       </div>
     </div>
   </section>
@@ -254,60 +254,6 @@ import Icon from '../components/Icon.astro';
 
 </Layout>
 
-<style is:global>
-  .bishops-callout {
-    padding: 3rem 2rem;
-    background: #2C1F0E;
-  }
-
-  .bishops-inner {
-    max-width: 700px;
-    margin: 0 auto;
-    display: flex;
-    align-items: center;
-    gap: 2rem;
-    background: rgba(240, 165, 0, 0.08);
-    border: 1px solid rgba(240, 165, 0, 0.25);
-    border-radius: 8px;
-    padding: 1.75rem 2rem;
-  }
-
-  .bishops-logo {
-    background: #ffffff;
-    border-radius: 6px;
-    padding: 10px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-shrink: 0;
-  }
-
-  .bishops-logo img {
-    height: 72px;
-    width: auto;
-  }
-
-  .bishops-name {
-    font-family: 'Playfair Display', serif;
-    font-size: 1.1rem;
-    color: #fff;
-    margin: 0 0 0.4rem;
-  }
-
-  .bishops-detail {
-    font-family: 'DM Sans', sans-serif;
-    font-size: 0.85rem;
-    color: rgba(255,255,255,0.6);
-    margin: 0;
-  }
-
-  @media (max-width: 560px) {
-    .bishops-inner {
-      flex-direction: column;
-      text-align: center;
-    }
-  }
-</style>
 
 <script>
   import { gsap } from 'gsap';
