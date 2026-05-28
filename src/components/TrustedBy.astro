@@ -40,8 +40,11 @@ const { showBishops = false } = Astro.props;
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 48px;
-  opacity: 0.7;
+  height: 56px;
+  background: #ffffff;
+  border-radius: 8px;
+  padding: 10px 16px;
+  opacity: 0.9;
   transition: opacity 0.3s ease;
 }
 .partner-logo:hover {
@@ -52,6 +55,5 @@ const { showBishops = false } = Astro.props;
   width: auto;
   max-width: 130px;
   object-fit: contain;
-  filter: brightness(0) invert(1) !important;
 }
 </style>
