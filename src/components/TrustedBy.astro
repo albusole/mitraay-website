@@ -1,0 +1,50 @@
+---
+interface Props {
+  showBishops?: boolean;
+}
+const { showBishops = false } = Astro.props;
+---
+
+<div class="trusted-by">
+  <p class="trusted-label">Groups that have visited</p>
+  <div class="trusted-logos">
+    <img src="/images/partners/myholidays.png" alt="My Holidays" />
+    <img src="/images/partners/amusehub.png" alt="Amuse Hub Holidays" />
+    <img src="/images/partners/trinity.png" alt="Trinity Adventure" />
+    {showBishops && <img src="/images/partners/bishops.png" alt="Bishop's Co-Ed School" />}
+  </div>
+</div>
+
+<style>
+.trusted-by {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+.trusted-label {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: #F0A500;
+}
+.trusted-logos {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 3rem;
+}
+.trusted-logos img {
+  height: 56px;
+  width: auto;
+  filter: brightness(0) invert(1);
+  opacity: 0.6;
+  transition: opacity 0.2s ease;
+}
+.trusted-logos img:hover {
+  opacity: 1;
+}
+</style>

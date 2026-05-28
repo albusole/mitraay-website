@@ -37,7 +37,7 @@ import Icon from '../components/Icon.astro';
 
         <!-- WhatsApp primary CTA -->
         <a
-          href="https://wa.me/919112984757?text=Hi%2C%20I%20want%20to%20plan%20a%20group%20trip%20to%20Mitraay%20Resort"
+          href="https://wa.me/919112255539?text=Hi%2C%20I%27m%20interested%20in%20booking%20Mitraay%20Agro%20Resort.%0A%0AGroup%20type%3A%20%0ANumber%20of%20people%3A%20%0APreferred%20dates%3A"
           target="_blank"
           rel="noopener noreferrer"
           class="flex items-center gap-4 bg-[#25D366] hover:bg-[#1da851] text-white px-6 py-5 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-200 mb-4 group"
@@ -61,11 +61,25 @@ import Icon from '../components/Icon.astro';
           <a href="https://g.page/r/CVSPpp_e6fkzEBM/review" target="_blank" rel="noopener noreferrer" class="inline-block border border-[#E8871A] text-[#E8871A] hover:bg-[#E8871A] hover:text-white px-5 py-2 rounded-full text-sm font-medium transition-colors duration-200">Leave a Review</a>
         </div>
 
-        <a href="tel:+919112984757" class="flex items-center gap-4 bg-white text-[#2C1F0E] px-6 py-4 rounded-2xl shadow-sm hover:shadow-md transition-all duration-200 mb-10">
+        <a href="tel:+919112255539" class="flex items-center gap-4 bg-white text-[#2C1F0E] px-6 py-4 rounded-2xl shadow-sm hover:shadow-md transition-all duration-200 mb-4">
           <span class="text-2xl">📞</span>
           <div>
             <p class="font-medium">Call directly</p>
-            <p class="text-[#4A3728] text-sm">+91 91129 84757</p>
+            <p class="text-[#4A3728] text-sm">+91 91122 55539</p>
+          </div>
+        </a>
+
+        <a href="https://www.instagram.com/mitraayresort/" target="_blank" rel="noopener noreferrer" class="flex items-center gap-4 bg-white text-[#2C1F0E] px-6 py-4 rounded-2xl shadow-sm hover:shadow-md transition-all duration-200 mb-10">
+          <div class="w-10 h-10 rounded-full bg-gradient-to-br from-[#833AB4] via-[#FD1D1D] to-[#FCB045] flex items-center justify-center flex-shrink-0">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="w-5 h-5">
+              <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+              <circle cx="12" cy="12" r="4"/>
+              <circle cx="17.5" cy="6.5" r="0.5" fill="white" stroke="none"/>
+            </svg>
+          </div>
+          <div>
+            <p class="font-medium">Instagram</p>
+            <p class="text-[#4A3728] text-sm">@mitraayresort</p>
           </div>
         </a>
 
@@ -264,6 +278,25 @@ import Icon from '../components/Icon.astro';
     </div>
   </section>
 
+  <!-- FIND US MAP -->
+  <section class="py-16 px-6 lg:px-12 bg-[#EDE3D4]">
+    <div class="max-w-7xl mx-auto">
+      <h2 class="font-['Playfair_Display'] text-3xl font-bold text-[#2C1F0E] mb-3">Find Us</h2>
+      <p class="text-[#4A3728] text-base mb-8">Vedbhoomi Eco Village, Raigad, Maharashtra</p>
+      <div style="border-radius:8px; overflow:hidden; border:1px solid rgba(0,0,0,0.1);">
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3773.5!2d73.330902!3d18.304726!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTjCsDE4JzE3LjAiTiA3M8KwMTknNTEuMiJF!5e0!3m2!1sen!2sin!4v1"
+          width="100%"
+          height="400"
+          style="border:0;"
+          allowfullscreen=""
+          loading="lazy"
+          title="Mitraay Agro Resort location"
+        ></iframe>
+      </div>
+    </div>
+  </section>
+
 </Layout>
 
 <script>
@@ -282,33 +315,23 @@ import Icon from '../components/Icon.astro';
   const form = document.getElementById('enquiry-form') as HTMLFormElement;
   const success = document.getElementById('form-success')!;
 
-  form.addEventListener('submit', (e) => {
-    e.preventDefault();
-
-    const name    = (document.getElementById('f-name')  as HTMLInputElement).value;
-    const phone   = (document.getElementById('f-phone') as HTMLInputElement).value;
-    const email   = (document.getElementById('f-email') as HTMLInputElement).value;
-    const group   = (document.getElementById('f-group') as HTMLInputElement).value;
-    const type    = (document.getElementById('f-type')  as HTMLSelectElement).value;
-    const from    = (document.getElementById('f-from')  as HTMLInputElement).value;
-    const to      = (document.getElementById('f-to')    as HTMLInputElement).value;
-    const msg     = (document.getElementById('f-msg')   as HTMLTextAreaElement).value;
-
-    const text = [
-      `Hi, I want to plan a group trip to Mitraay Resort.`,
-      `Name: ${name}`,
-      `Phone: ${phone}`,
-      email ? `Email: ${email}` : '',
-      `Group size: ${group}`,
-      `Trip type: ${type}`,
-      from ? `Dates: ${from}${to ? ' to ' + to : ''}` : '',
-      msg ? `Details: ${msg}` : '',
-    ].filter(Boolean).join('\n');
-
-    const url = `https://wa.me/919112984757?text=${encodeURIComponent(text)}`;
-    window.open(url, '_blank');
-
+  function buildWhatsAppLink() {
+    const groupType = (document.getElementById('f-type') as HTMLSelectElement)?.value || '';
+    const headcount = (document.getElementById('f-group') as HTMLInputElement)?.value || '';
+    const fromDate  = (document.getElementById('f-from')  as HTMLInputElement)?.value || '';
+    const toDate    = (document.getElementById('f-to')    as HTMLInputElement)?.value || '';
+    const dates     = [fromDate, toDate].filter(Boolean).join(' to ') || '';
+    const notes     = (document.getElementById('f-msg')   as HTMLTextAreaElement)?.value || '';
+    const name      = (document.getElementById('f-name')  as HTMLInputElement)?.value || '';
+    const phone     = (document.getElementById('f-phone') as HTMLInputElement)?.value || '';
+    const message   = `Hi, I'm interested in booking Mitraay Agro Resort.\n\nName: ${name}\nPhone: ${phone}\nGroup type: ${groupType}\nNumber of people: ${headcount}\nPreferred dates: ${dates}\nAnything else: ${notes}`;
+    window.open(`https://wa.me/919112255539?text=${encodeURIComponent(message)}`, '_blank');
     form.classList.add('hidden');
     success.classList.remove('hidden');
+  }
+
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    buildWhatsAppLink();
   });
 </script>

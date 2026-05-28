@@ -18,6 +18,7 @@ const {
 } = Astro.props;
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+const ogImageUrl = ogImage.startsWith('http') ? ogImage : `https://mitraayresort.in${ogImage}`;
 ---
 
 <!doctype html>
@@ -37,7 +38,7 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
     <meta property="og:url" content={canonicalURL} />
     <meta property="og:title" content={ogTitle || title} />
     <meta property="og:description" content={ogDescription || description} />
-    <meta property="og:image" content={ogImage} />
+    <meta property="og:image" content={ogImageUrl} />
 
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -130,9 +131,16 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
               <img src="/images/logo-transparent.png" alt="Mitraay logo" class="h-12 w-12 object-contain" />
               <span class="font-['Playfair_Display'] text-3xl font-semibold">Mitraay</span>
             </div>
-            <p class="font-['Caveat'] text-[#F5B04A] text-xl mb-4">Come with your people. Leave with a story.</p>
             <p class="text-white/60 text-sm leading-relaxed max-w-sm">A purposeful farm retreat near Raigad Fort, Raigad, Maharashtra. Built for groups who want more than a getaway.</p>
             <p class="text-white/40 text-xs mt-4 tracking-[0.1em] uppercase">A project by Vedbhoomi Eco Village</p>
+            <a href="https://www.instagram.com/mitraayresort/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 mt-4 text-white/50 hover:text-[#F5B04A] transition-colors text-sm">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4">
+                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+                <circle cx="12" cy="12" r="4"/>
+                <circle cx="17.5" cy="6.5" r="0.5" fill="currentColor" stroke="none"/>
+              </svg>
+              @mitraayresort
+            </a>
           </div>
 
           <!-- Links -->
@@ -170,8 +178,7 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
         </div>
 
         <div class="border-t border-white/10 pt-8 flex flex-col sm:flex-row justify-between items-center gap-4">
-          <p class="text-white/40 text-sm">© 2025 Mitraay Resort · Raigad, Maharashtra</p>
-          <p class="font-['Caveat'] text-[#F5B04A] text-lg">Come with your people. Leave with a story.</p>
+          <p class="text-white/40 text-sm">© 2026 Mitraay Resort · Raigad, Maharashtra</p>
         </div>
       </div>
     </footer>

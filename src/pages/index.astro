@@ -1,6 +1,7 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import Icon from '../components/Icon.astro';
+import TrustedBy from '../components/TrustedBy.astro';
 ---
 
 <Layout
@@ -26,10 +27,10 @@ import Icon from '../components/Icon.astro';
 
     <!-- Hero content -->
     <div class="relative z-20 pt-[18vh] px-6 lg:px-16 max-w-2xl">
-      <p id="hero-brand-credit" class="font-['Caveat'] text-[#F5B04A] text-xl">A project by Vedbhoomi Eco Village</p>
-      <h1 id="hero-headline" class="font-['Playfair_Display'] text-4xl md:text-5xl font-bold text-white mt-2 leading-tight">
+      <h1 id="hero-headline" class="font-['Playfair_Display'] text-4xl md:text-5xl font-bold text-white leading-tight">
         Come with your people.<br />Leave with a story.
       </h1>
+      <p id="hero-brand-credit" class="font-['Caveat'] text-[#F5B04A] text-xl mt-3">A project by Vedbhoomi Eco Village</p>
       <p id="hero-sub" class="text-white/80 text-xl mt-5 max-w-2xl leading-relaxed">
         A purposeful farm retreat near Raigad Fort, Raigad. Built for groups who want more than a getaway.
       </p>
@@ -270,6 +271,11 @@ import Icon from '../components/Icon.astro';
     </div>
   </section>
 
+  <!-- TRUSTED BY -->
+  <section class="py-16 px-6 bg-[#2C1F0E]">
+    <TrustedBy />
+  </section>
+
   <!-- FINAL CTA -->
   <section class="relative py-32 px-6 flex items-center justify-center overflow-hidden">
     <div class="absolute inset-0">
@@ -357,10 +363,10 @@ import Icon from '../components/Icon.astro';
 
   // Hero entrance timeline
   const tl = gsap.timeline({ delay: 0.3, defaults: { ease: 'power3.out' } });
-  tl.to('#hero-brand-credit', { opacity: 1, y: 0, duration: 0.7 })
-    .to('#hero-headline', { opacity: 1, y: 0, duration: 0.9 }, '-=0.3')
-    .to('#hero-sub',      { opacity: 1, y: 0, duration: 0.8 }, '-=0.5')
-    .to('#hero-ctas',     { opacity: 1, y: 0, duration: 0.7 }, '-=0.4');
+  tl.to('#hero-headline',      { opacity: 1, y: 0, duration: 0.9 })
+    .to('#hero-brand-credit',  { opacity: 1, y: 0, duration: 0.6 }, '-=0.5')
+    .to('#hero-sub',           { opacity: 1, y: 0, duration: 0.8 }, '-=0.3')
+    .to('#hero-ctas',          { opacity: 1, y: 0, duration: 0.7 }, '-=0.4');
 
   // Hero parallax — image moves at 0.4x scroll speed
   gsap.to('#hero-parallax-img', {
