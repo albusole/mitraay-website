@@ -7,11 +7,11 @@ const { showBishops = false } = Astro.props;
 
 <div class="trusted-by">
   <p class="trusted-label">Groups that have visited</p>
-  <div class="trusted-logos">
-    <img class="partner-logo" src="/images/partners/myholidays.png" alt="My Holidays" />
-    <img class="partner-logo" src="/images/partners/amusehub.png" alt="Amuse Hub Holidays" />
-    <img class="partner-logo" src="/images/partners/trinity.png" alt="Trinity Adventure" />
-    {showBishops === true ? <img class="partner-logo" src="/images/partners/bishops.png" alt="Bishop's Co-Ed School" /> : null}
+  <div class="logo-strip">
+    <div class="partner-logo"><img src="/images/partners/myholidays.png" alt="My Holidays" /></div>
+    <div class="partner-logo"><img src="/images/partners/amusehub.png" alt="Amuse Hub Holidays" /></div>
+    <div class="partner-logo"><img src="/images/partners/trinity.png" alt="Trinity Adventure" /></div>
+    {showBishops === true ? <div class="partner-logo"><img src="/images/partners/bishops.png" alt="Bishop's Co-Ed School" /></div> : null}
   </div>
 </div>
 
@@ -29,19 +29,29 @@ const { showBishops = false } = Astro.props;
   letter-spacing: 0.15em;
   color: #F0A500;
 }
-.trusted-logos {
+.logo-strip {
   display: flex;
-  flex-direction: row;
   align-items: center;
   justify-content: center;
+  gap: 4rem;
   flex-wrap: wrap;
-  gap: 3rem;
 }
 .partner-logo {
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 56px;
+  height: 48px;
+  opacity: 0.7;
+  transition: opacity 0.3s ease;
+}
+.partner-logo:hover {
   opacity: 1;
+}
+.partner-logo img {
+  height: 100%;
+  width: auto;
+  max-width: 130px;
+  object-fit: contain;
+  filter: brightness(0) invert(1);
 }
 </style>
