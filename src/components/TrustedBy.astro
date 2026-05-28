@@ -8,10 +8,10 @@ const { showBishops = false } = Astro.props;
 <div class="trusted-by">
   <p class="trusted-label">Groups that have visited</p>
   <div class="trusted-logos">
-    <img src="/images/myholidays.png" alt="My Holidays" />
-    <img src="/images/amusehub.png" alt="Amuse Hub Holidays" />
-    <img src="/images/trinity.png" alt="Trinity Adventure" />
-    {showBishops && <img src="/images/bishops.png" alt="Bishop's Co-Ed School" />}
+    <img class="partner-logo" src="/images/myholidays.png" alt="My Holidays" />
+    <img class="partner-logo" src="/images/amusehub.png" alt="Amuse Hub Holidays" />
+    <img class="partner-logo" src="/images/trinity.png" alt="Trinity Adventure" />
+    {showBishops && <img class="partner-logo" src="/images/bishops.png" alt="Bishop's Co-Ed School" />}
   </div>
 </div>
 
@@ -37,13 +37,11 @@ const { showBishops = false } = Astro.props;
   flex-wrap: wrap;
   gap: 3rem;
 }
-.trusted-logos img {
+.partner-logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   height: 56px;
-  width: auto;
-  opacity: 0.6;
-  transition: opacity 0.2s ease;
-}
-.trusted-logos img:hover {
   opacity: 1;
 }
 </style>
