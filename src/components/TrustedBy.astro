@@ -11,7 +11,7 @@ const { showBishops = false } = Astro.props;
     <img class="partner-logo" src="/images/partners/myholidays.png" alt="My Holidays" />
     <img class="partner-logo" src="/images/partners/amusehub.png" alt="Amuse Hub Holidays" />
     <img class="partner-logo" src="/images/partners/trinity.png" alt="Trinity Adventure" />
-    {showBishops && <img class="partner-logo" src="/images/partners/bishops.png" alt="Bishop's Co-Ed School" />}
+    {showBishops === true ? <img class="partner-logo" src="/images/partners/bishops.png" alt="Bishop's Co-Ed School" /> : null}
   </div>
 </div>
 
