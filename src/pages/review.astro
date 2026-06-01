@@ -1,0 +1,18 @@
+---
+const target = 'https://g.page/r/CVSPpp_e6fkzEBM/review';
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="refresh" content={`0;url=${target}`} />
+    <title>Redirecting to Google Review…</title>
+    <script define:vars={{ target }}>
+      window.location.replace(target);
+    </script>
+  </head>
+  <body>
+    <p>Redirecting… <a href={target}>Click here if not redirected automatically.</a></p>
+  </body>
+</html>

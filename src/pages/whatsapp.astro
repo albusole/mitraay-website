@@ -1,0 +1,18 @@
+---
+const target = 'https://wa.me/919112984575';
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="refresh" content={`0;url=${target}`} />
+    <title>Redirecting to WhatsApp…</title>
+    <script define:vars={{ target }}>
+      window.location.replace(target);
+    </script>
+  </head>
+  <body>
+    <p>Redirecting… <a href={target}>Click here if not redirected automatically.</a></p>
+  </body>
+</html>
