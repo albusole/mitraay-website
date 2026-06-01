@@ -29,7 +29,7 @@ import Icon from '../components/Icon.astro';
 
   <!-- MAIN CONTACT SECTION -->
   <section class="py-20 px-6 lg:px-12 bg-[#F7F0E6]">
-    <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16">
+    <div class="max-w-3xl mx-auto">
 
       <!-- LEFT: Info + Directions -->
       <div id="con-info">
@@ -170,111 +170,6 @@ import Icon from '../components/Icon.astro';
         </div>
       </div>
 
-      <!-- RIGHT: Enquiry Form -->
-      <div id="con-form">
-        <h2 class="font-['Playfair_Display'] text-3xl font-bold text-[#2C1F0E] mb-8">Send an Enquiry</h2>
-
-        <form id="enquiry-form" class="space-y-5">
-          <div>
-            <label class="block text-sm font-semibold text-[#4A3728] mb-1.5">Your Name *</label>
-            <input
-              type="text"
-              id="f-name"
-              required
-              placeholder="Full name"
-              class="w-full bg-white border border-[#EDE3D4] rounded-xl px-4 py-3 text-[#2C1F0E] placeholder:text-[#8B7355]/50 focus:outline-none focus:ring-2 focus:ring-[#E8871A]/30 focus:border-[#E8871A] transition-all"
-            />
-          </div>
-          <div>
-            <label class="block text-sm font-semibold text-[#4A3728] mb-1.5">WhatsApp Number *</label>
-            <input
-              type="tel"
-              id="f-phone"
-              required
-              placeholder="+91 98765 43210"
-              class="w-full bg-white border border-[#EDE3D4] rounded-xl px-4 py-3 text-[#2C1F0E] placeholder:text-[#8B7355]/50 focus:outline-none focus:ring-2 focus:ring-[#E8871A]/30 focus:border-[#E8871A] transition-all"
-            />
-          </div>
-          <div>
-            <label class="block text-sm font-semibold text-[#4A3728] mb-1.5">Email <span class="font-normal text-[#8B7355]">(optional)</span></label>
-            <input
-              type="email"
-              id="f-email"
-              placeholder="you@example.com"
-              class="w-full bg-white border border-[#EDE3D4] rounded-xl px-4 py-3 text-[#2C1F0E] placeholder:text-[#8B7355]/50 focus:outline-none focus:ring-2 focus:ring-[#E8871A]/30 focus:border-[#E8871A] transition-all"
-            />
-          </div>
-          <div class="grid grid-cols-2 gap-4">
-            <div>
-              <label class="block text-sm font-semibold text-[#4A3728] mb-1.5">Group Size *</label>
-              <input
-                type="number"
-                id="f-group"
-                required
-                min="1"
-                max="40"
-                placeholder="22–28"
-                class="w-full bg-white border border-[#EDE3D4] rounded-xl px-4 py-3 text-[#2C1F0E] placeholder:text-[#8B7355]/50 focus:outline-none focus:ring-2 focus:ring-[#E8871A]/30 focus:border-[#E8871A] transition-all"
-              />
-            </div>
-            <div>
-              <label class="block text-sm font-semibold text-[#4A3728] mb-1.5">Trip Type *</label>
-              <select
-                id="f-type"
-                required
-                class="w-full bg-white border border-[#EDE3D4] rounded-xl px-4 py-3 text-[#2C1F0E] focus:outline-none focus:ring-2 focus:ring-[#E8871A]/30 focus:border-[#E8871A] transition-all appearance-none"
-              >
-                <option value="" disabled selected>Select type</option>
-                <option value="Adventure">Adventure</option>
-                <option value="Retreat">Retreat</option>
-                <option value="School Trip">School Trip</option>
-                <option value="Other">Other</option>
-              </select>
-            </div>
-          </div>
-          <div class="grid grid-cols-2 gap-4">
-            <div>
-              <label class="block text-sm font-semibold text-[#4A3728] mb-1.5">From Date</label>
-              <input
-                type="date"
-                id="f-from"
-                class="w-full bg-white border border-[#EDE3D4] rounded-xl px-4 py-3 text-[#2C1F0E] focus:outline-none focus:ring-2 focus:ring-[#E8871A]/30 focus:border-[#E8871A] transition-all"
-              />
-            </div>
-            <div>
-              <label class="block text-sm font-semibold text-[#4A3728] mb-1.5">To Date</label>
-              <input
-                type="date"
-                id="f-to"
-                class="w-full bg-white border border-[#EDE3D4] rounded-xl px-4 py-3 text-[#2C1F0E] focus:outline-none focus:ring-2 focus:ring-[#E8871A]/30 focus:border-[#E8871A] transition-all"
-              />
-            </div>
-          </div>
-          <div>
-            <label class="block text-sm font-semibold text-[#4A3728] mb-1.5">Message</label>
-            <textarea
-              id="f-msg"
-              rows="4"
-              placeholder="Tell us about your group, what you'd like to do, any special requirements..."
-              class="w-full bg-white border border-[#EDE3D4] rounded-xl px-4 py-3 text-[#2C1F0E] placeholder:text-[#8B7355]/50 focus:outline-none focus:ring-2 focus:ring-[#E8871A]/30 focus:border-[#E8871A] transition-all resize-none"
-            ></textarea>
-          </div>
-
-          <button
-            type="submit"
-            class="w-full bg-[#E8871A] hover:bg-[#C96D0A] text-white py-4 rounded-xl font-semibold text-lg transition-all duration-200 shadow-lg hover:shadow-xl"
-          >
-            Send via WhatsApp →
-          </button>
-        </form>
-
-        <!-- Success state -->
-        <div id="form-success" class="hidden text-center py-12">
-          <div class="text-5xl mb-4">🎉</div>
-          <h3 class="font-['Playfair_Display'] text-2xl font-bold text-[#2C1F0E] mb-3">WhatsApp is opening...</h3>
-          <p class="text-[#4A3728]">Your enquiry has been pre-filled. Just hit send. We'll respond within 24 hours.</p>
-        </div>
-      </div>
     </div>
   </section>
 
@@ -309,29 +204,4 @@ import Icon from '../components/Icon.astro';
   gsap.to('#con-sub', { opacity: 1, y: 0, duration: 0.8, delay: 0.65, ease: 'power3.out' });
 
   gsap.from('#con-info', { scrollTrigger: { trigger: '#con-info', start: 'top 80%' }, x: -40, opacity: 0, duration: 1, ease: 'power3.out' });
-  gsap.from('#con-form', { scrollTrigger: { trigger: '#con-form', start: 'top 80%' }, x: 40, opacity: 0, duration: 1, ease: 'power3.out' });
-
-  // Form → WhatsApp
-  const form = document.getElementById('enquiry-form') as HTMLFormElement;
-  const success = document.getElementById('form-success')!;
-
-  function buildWhatsAppLink() {
-    const groupType = (document.getElementById('f-type') as HTMLSelectElement)?.value || '';
-    const headcount = (document.getElementById('f-group') as HTMLInputElement)?.value || '';
-    const fromDate  = (document.getElementById('f-from')  as HTMLInputElement)?.value || '';
-    const toDate    = (document.getElementById('f-to')    as HTMLInputElement)?.value || '';
-    const dates     = [fromDate, toDate].filter(Boolean).join(' to ') || '';
-    const notes     = (document.getElementById('f-msg')   as HTMLTextAreaElement)?.value || '';
-    const name      = (document.getElementById('f-name')  as HTMLInputElement)?.value || '';
-    const phone     = (document.getElementById('f-phone') as HTMLInputElement)?.value || '';
-    const message   = `Hi, I'm interested in booking Mitraay Agro Resort.\n\nName: ${name}\nPhone: ${phone}\nGroup type: ${groupType}\nNumber of people: ${headcount}\nPreferred dates: ${dates}\nAnything else: ${notes}`;
-    window.open(`https://wa.me/919112984575?text=${encodeURIComponent(message)}`, '_blank');
-    form.classList.add('hidden');
-    success.classList.remove('hidden');
-  }
-
-  form.addEventListener('submit', (e) => {
-    e.preventDefault();
-    buildWhatsAppLink();
-  });
 </script>

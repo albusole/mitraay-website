@@ -43,12 +43,6 @@ import TrustedBy from '../components/TrustedBy.astro';
         >
           Plan Your Trip →
         </a>
-        <button
-          onclick="document.getElementById('what-is-mitraay').scrollIntoView({behavior:'smooth'})"
-          class="border-2 border-white/70 hover:border-white text-white px-8 py-4 rounded-full font-semibold text-lg transition-all duration-200 backdrop-blur-sm hover:bg-white/10"
-        >
-          Explore the Resort
-        </button>
       </div>
     </div>
   </section>
@@ -114,28 +108,8 @@ import TrustedBy from '../components/TrustedBy.astro';
       </div>
 
       <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-        <!-- Adventure card -->
-        <div id="card-1" class="group relative overflow-hidden rounded-2xl shadow-xl cursor-pointer">
-          <div class="overflow-hidden h-80">
-            <img
-              src="/images/adventure-river-swimming-group.jpg"
-              alt="Group swimming in the river near Mitraay Resort"
-              class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
-            />
-          </div>
-          <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent"></div>
-          <div class="absolute bottom-0 left-0 right-0 p-6 text-white">
-            <span class="font-['Caveat'] text-[#F5B04A] text-lg">Explore outdoors</span>
-            <h3 class="font-['Playfair_Display'] text-2xl font-bold mb-3">Adventure</h3>
-            <p class="text-white/80 text-sm mb-4">River treks, waterfall visits, Raigad Fort, bonfire nights, farm activities: custom planned for your group.</p>
-            <a href="/adventure" class="inline-flex items-center gap-2 text-[#F5B04A] font-semibold text-sm hover:gap-3 transition-all duration-200">
-              Explore adventures →
-            </a>
-          </div>
-        </div>
-
         <!-- Retreat card -->
-        <div id="card-2" class="group relative overflow-hidden rounded-2xl shadow-xl cursor-pointer">
+        <div id="card-1" class="group relative overflow-hidden rounded-2xl shadow-xl cursor-pointer">
           <div class="overflow-hidden h-80">
             <img
               src="/images/retreat-meditation-sunrise-wide.jpg"
@@ -150,6 +124,26 @@ import TrustedBy from '../components/TrustedBy.astro';
             <p class="text-white/80 text-sm mb-4">Yoga, spiritual, and wellness retreats. Guided sessions, farm-grown meals, complete privacy.</p>
             <a href="/retreat" class="inline-flex items-center gap-2 text-[#F5B04A] font-semibold text-sm hover:gap-3 transition-all duration-200">
               Plan a retreat →
+            </a>
+          </div>
+        </div>
+
+        <!-- Adventure card -->
+        <div id="card-2" class="group relative overflow-hidden rounded-2xl shadow-xl cursor-pointer">
+          <div class="overflow-hidden h-80">
+            <img
+              src="/images/adventure-river-swimming-group.jpg"
+              alt="Group swimming in the river near Mitraay Resort"
+              class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+            />
+          </div>
+          <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent"></div>
+          <div class="absolute bottom-0 left-0 right-0 p-6 text-white">
+            <span class="font-['Caveat'] text-[#F5B04A] text-lg">Explore outdoors</span>
+            <h3 class="font-['Playfair_Display'] text-2xl font-bold mb-3">Adventure</h3>
+            <p class="text-white/80 text-sm mb-4">River treks, waterfall visits, Raigad Fort, bonfire nights, farm activities: custom planned for your group.</p>
+            <a href="/adventure" class="inline-flex items-center gap-2 text-[#F5B04A] font-semibold text-sm hover:gap-3 transition-all duration-200">
+              Explore adventures →
             </a>
           </div>
         </div>
