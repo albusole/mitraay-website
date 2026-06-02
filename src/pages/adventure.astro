@@ -11,14 +11,8 @@ import Icon from '../components/Icon.astro';
 
   <!-- HERO -->
   <section class="relative h-[70vh] min-h-[500px] flex items-end overflow-hidden">
-    <div class="absolute inset-0">
-      <img
-        src="/images/adventure-river-swimming-group.jpg"
-        alt="Group swimming in the river near Mitraay Resort"
-        class="w-full h-full object-cover"
-      />
-      <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-black/20"></div>
-    </div>
+    <canvas id="adv-canvas" class="absolute inset-0 w-full h-full" style="display:block;"></canvas>
+    <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent"></div>
     <div class="relative z-10 pb-20 px-6 lg:px-12 max-w-7xl mx-auto w-full">
       <span class="font-['Caveat'] text-[#F5B04A] text-xl">Outdoors</span>
       <h1 id="adv-h1" class="font-['Playfair_Display'] text-5xl md:text-7xl font-bold text-white mt-2 leading-tight">
@@ -51,7 +45,7 @@ import Icon from '../components/Icon.astro';
       </div>
       <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
 
-        <div class="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-shadow duration-200 adv-card">
+        <div class="card bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-shadow duration-200 adv-card">
           <div class="overflow-hidden h-[220px]">
             <img src="/images/adventure-trek-rocky-ridge-group.jpg" alt="Group on a nature walk through the farm at Mitraay Resort" class="w-full h-full object-cover hover:scale-105 transition-transform duration-700" />
           </div>
@@ -65,7 +59,7 @@ import Icon from '../components/Icon.astro';
           </div>
         </div>
 
-        <div class="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-shadow duration-200 adv-card">
+        <div class="card bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-shadow duration-200 adv-card">
           <div class="overflow-hidden h-[220px]">
             <img src="/images/adventure-river-swimming-group.jpg" alt="Group swimming in the river at Mitraay Resort" class="w-full h-full object-cover hover:scale-105 transition-transform duration-700" />
           </div>
@@ -93,7 +87,7 @@ import Icon from '../components/Icon.astro';
       </div>
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
 
-        <div class="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-shadow duration-200 adv-card">
+        <div class="card bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-shadow duration-200 adv-card">
           <div class="overflow-hidden h-[220px]">
             <img src="/images/adventure-sahyadri-fort-trek-2.jpg" alt="Raigad Fort ramparts and Sahyadri hillside, Chhatrapati Shivaji's capital Maharashtra" class="w-full h-full object-cover hover:scale-105 transition-transform duration-700" />
           </div>
@@ -104,7 +98,7 @@ import Icon from '../components/Icon.astro';
           </div>
         </div>
 
-        <div class="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-shadow duration-200 adv-card">
+        <div class="card bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-shadow duration-200 adv-card">
           <div class="overflow-hidden h-[220px]">
             <img src="/images/adventure-kolad-rafting.jpg" alt="River rafting on the Kundalika river rapids near Kolad Maharashtra" class="w-full h-full object-cover hover:scale-105 transition-transform duration-700" />
           </div>
@@ -115,7 +109,7 @@ import Icon from '../components/Icon.astro';
           </div>
         </div>
 
-        <div class="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-shadow duration-200 adv-card">
+        <div class="card bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-shadow duration-200 adv-card">
           <div class="overflow-hidden h-[220px]">
             <img src="/images/adventure-mhagad-trek.jpg" alt="Mangad Trek dense Sahyadri forest trail and ridgeline near Mitraay Resort" class="w-full h-full object-cover hover:scale-105 transition-transform duration-700" />
           </div>
@@ -126,7 +120,7 @@ import Icon from '../components/Icon.astro';
           </div>
         </div>
 
-        <div class="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-shadow duration-200 adv-card">
+        <div class="card bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-shadow duration-200 adv-card">
           <div class="overflow-hidden h-[220px]">
             <img src="/images/adventure-devkund-waterfall.jpg" alt="Devkund waterfall pristine jungle pool in Sahyadri forest near Mitraay Resort" class="w-full h-full object-cover hover:scale-105 transition-transform duration-700" />
           </div>
@@ -137,7 +131,7 @@ import Icon from '../components/Icon.astro';
           </div>
         </div>
 
-        <div class="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-shadow duration-200 adv-card">
+        <div class="card bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-shadow duration-200 adv-card">
           <div class="overflow-hidden h-[220px]">
             <img src="/images/adventure-kumbhe-waterfall.jpg" alt="Kumbhe Waterfall 178-foot freefall into Raigad valley near Mitraay Resort" class="w-full h-full object-cover hover:scale-105 transition-transform duration-700" />
           </div>
@@ -259,4 +253,82 @@ import Icon from '../components/Icon.astro';
     scrollTrigger: { trigger: '#adv-cta', start: 'top 80%', once: true },
     y: 30, opacity: 0, duration: 0.9, ease: 'power3.out',
   });
+</script>
+
+<script>
+  import * as THREE from 'three';
+
+  const canvas = document.getElementById('adv-canvas') as HTMLCanvasElement | null;
+  if (canvas) {
+    const section = canvas.parentElement as HTMLElement;
+    const renderer = new THREE.WebGLRenderer({ canvas, alpha: false, antialias: false });
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+
+    const camera = new THREE.PerspectiveCamera(60, 1, 0.1, 100);
+    camera.position.z = 2;
+    const scene = new THREE.Scene();
+
+    const geo = new THREE.PlaneGeometry(5, 4, 100, 80);
+
+    const mat = new THREE.ShaderMaterial({
+      uniforms: {
+        uTime:  { value: 0 },
+        uMouse: { value: new THREE.Vector2(0.5, 0.5) },
+      },
+      vertexShader: `
+        uniform float uTime;
+        uniform vec2  uMouse;
+        varying vec2  vUv;
+        void main() {
+          vUv = uv;
+          vec3 pos = position;
+          float d = distance(uv, uMouse);
+          pos.z += sin(pos.x * 6.0 + uTime * 1.4) * 0.04
+                 + sin(pos.y * 5.0 + uTime * 1.2) * 0.035
+                 + sin(d * 18.0 - uTime * 2.8) * 0.055 / (d + 0.3);
+          gl_Position = projectionMatrix * modelViewMatrix * vec4(pos, 1.0);
+        }
+      `,
+      fragmentShader: `
+        uniform float uTime;
+        varying vec2  vUv;
+        void main() {
+          float sh = sin(vUv.x * 32.0 + uTime * 1.8) * sin(vUv.y * 22.0 + uTime * 1.5) * 0.04;
+          vec3 c = vec3(0.04 + vUv.y * 0.12 + sh,
+                        0.16 + vUv.y * 0.22 + sh,
+                        0.32 + vUv.y * 0.28 + sh);
+          gl_FragColor = vec4(c, 1.0);
+        }
+      `,
+    });
+
+    scene.add(new THREE.Mesh(geo, mat));
+
+    function resize() {
+      const w = section.offsetWidth, h = section.offsetHeight;
+      renderer.setSize(w, h);
+      camera.aspect = w / h;
+      camera.updateProjectionMatrix();
+    }
+    resize();
+    window.addEventListener('resize', resize, { passive: true });
+
+    canvas.addEventListener('mousemove', (e: MouseEvent) => {
+      const r = canvas.getBoundingClientRect();
+      mat.uniforms.uMouse.value.set(
+        (e.clientX - r.left) / r.width,
+        1 - (e.clientY - r.top) / r.height
+      );
+    }, { passive: true });
+
+    let raf = 0;
+    function animate(t: number) {
+      mat.uniforms.uTime.value = t / 1000;
+      renderer.render(scene, camera);
+      raf = requestAnimationFrame(animate);
+    }
+    raf = requestAnimationFrame(animate);
+
+    window.addEventListener('beforeunload', () => cancelAnimationFrame(raf));
+  }
 </script>

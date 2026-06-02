@@ -55,7 +55,7 @@ const ogImageUrl = ogImage.startsWith('http') ? ogImage : `https://mitraayresort
       <div class="max-w-7xl mx-auto flex items-center justify-between">
         <!-- Logo -->
         <a href="/" class="flex items-center gap-3 group" aria-label="Mitraay Resort Home">
-          <img src="/images/logo-transparent.png" alt="Mitraay logo mark" class="h-10 w-10 object-contain" />
+          <span class="sun-logo"><img src="/images/logo-transparent.png" alt="Mitraay logo mark" class="h-10 w-10 object-contain" /></span>
           <span id="nav-logo-text" class="font-['Playfair_Display'] text-xl font-semibold text-white transition-colors duration-300">Mitraay Agro Resort</span>
         </a>
 
@@ -262,6 +262,17 @@ const ogImageUrl = ogImage.startsWith('http') ? ogImage : `https://mitraayresort
           hamLines[2]?.classList.remove('-rotate-45', '-translate-y-2');
         });
       });
+
+      // Scroll reveals
+      const _revealEls = document.querySelectorAll('.reveal');
+      if (_revealEls.length > 0) {
+        const _io = new IntersectionObserver((entries) => {
+          entries.forEach(e => {
+            if (e.isIntersecting) { e.target.classList.add('revealed'); _io.unobserve(e.target); }
+          });
+        }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+        _revealEls.forEach(el => _io.observe(el));
+      }
     </script>
   </body>
 </html>

@@ -83,39 +83,28 @@ import Icon from '../components/Icon.astro';
           </div>
         </a>
 
-        <!-- Nearby landmarks -->
+        <!-- Find us map -->
         <div class="mb-10">
-          <h3 class="font-['Playfair_Display'] text-xl font-bold text-[#2C1F0E] mb-5">Nearby Landmarks</h3>
-          <div class="space-y-3">
-            <div class="flex items-center gap-3 text-sm">
-              <div class="w-8 h-8 rounded-lg bg-[#E8871A]/10 flex items-center justify-center text-[#E8871A] shrink-0">
-                <Icon name="fort" class="w-4 h-4" />
-              </div>
-              <span class="text-[#4A3728] font-medium">Raigad Fort</span>
-              <span class="ml-auto text-[#8B7355] font-semibold">25km</span>
-            </div>
-            <div class="flex items-center gap-3 text-sm">
-              <div class="w-8 h-8 rounded-lg bg-[#3A5C3A]/10 flex items-center justify-center text-[#3A5C3A] shrink-0">
-                <Icon name="drop" class="w-4 h-4" />
-              </div>
-              <span class="text-[#4A3728] font-medium">Kumbhe Waterfall</span>
-              <span class="ml-auto text-[#8B7355] font-semibold">11km</span>
-            </div>
-            <div class="flex items-center gap-3 text-sm">
-              <div class="w-8 h-8 rounded-lg bg-[#8B7355]/10 flex items-center justify-center text-[#8B7355] shrink-0">
-                <Icon name="waves" class="w-4 h-4" />
-              </div>
-              <span class="text-[#4A3728] font-medium">Ulhas River</span>
-              <span class="ml-auto text-[#8B7355] font-semibold">Adjacent</span>
-            </div>
-            <div class="flex items-center gap-3 text-sm">
-              <div class="w-8 h-8 rounded-lg bg-[#D4A827]/10 flex items-center justify-center text-[#D4A827] shrink-0">
-                <Icon name="house" class="w-4 h-4" />
-              </div>
-              <span class="text-[#4A3728] font-medium">Mangaon</span>
-              <span class="ml-auto text-[#8B7355] font-semibold">~10km</span>
-            </div>
+          <h3 class="font-['Playfair_Display'] text-xl font-bold text-[#2C1F0E] mb-5">Find Us</h3>
+          <div style="border-radius:12px;overflow:hidden;border:0;">
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3773.5!2d73.330902!3d18.304726!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTjCsDE4JzE3LjAiTiA3M8KwMTknNTEuMiJF!5e0!3m2!1sen!2sin!4v1"
+              width="100%"
+              height="380"
+              style="border:0;display:block;"
+              allowfullscreen=""
+              loading="lazy"
+              title="Mitraay Agro Resort location"
+            ></iframe>
           </div>
+          <a
+            href="https://www.google.com/maps?q=18.304726,73.330902"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex items-center gap-2 mt-4 text-[#E8871A] font-semibold hover:gap-3 transition-all duration-200"
+          >
+            Get Directions →
+          </a>
         </div>
 
         <!-- Directions -->
@@ -173,24 +162,6 @@ import Icon from '../components/Icon.astro';
     </div>
   </section>
 
-  <!-- FIND US MAP -->
-  <section class="py-16 px-6 lg:px-12 bg-[#EDE3D4]">
-    <div class="max-w-7xl mx-auto">
-      <h2 class="font-['Playfair_Display'] text-3xl font-bold text-[#2C1F0E] mb-3">Find Us</h2>
-      <p class="text-[#4A3728] text-base mb-8">Vedbhoomi Eco Village, Raigad, Maharashtra</p>
-      <div style="border-radius:8px; overflow:hidden; border:1px solid rgba(0,0,0,0.1);">
-        <iframe
-          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3773.5!2d73.330902!3d18.304726!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTjCsDE4JzE3LjAiTiA3M8KwMTknNTEuMiJF!5e0!3m2!1sen!2sin!4v1"
-          width="100%"
-          height="400"
-          style="border:0;"
-          allowfullscreen=""
-          loading="lazy"
-          title="Mitraay Agro Resort location"
-        ></iframe>
-      </div>
-    </div>
-  </section>
 
 </Layout>
 

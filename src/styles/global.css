@@ -60,3 +60,45 @@ h1, h2, h3, h4 {
 .scroll-bounce {
   animation: scroll-bounce 1.6s ease-in-out infinite;
 }
+
+/* ── Scroll reveals ────────────────────────────────── */
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+.reveal.revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ── Card hover lift ───────────────────────────────── */
+.card {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+}
+
+/* ── Sun logo rotation ─────────────────────────────── */
+@keyframes sun-rotate {
+  to { transform: rotate(360deg); }
+}
+.sun-logo {
+  display: inline-flex;
+  animation: sun-rotate 20s linear infinite;
+}
+.sun-logo:hover {
+  animation-play-state: paused;
+}
+
+/* ── Saffron glow pulses ───────────────────────────── */
+@keyframes saffron-pulse {
+  0%, 100% { opacity: 0.15; }
+  50%       { opacity: 0.40; }
+}
+@keyframes saffron-pulse-muted {
+  0%, 100% { opacity: 0.10; }
+  50%       { opacity: 0.30; }
+}

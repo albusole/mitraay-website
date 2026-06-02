@@ -19,6 +19,8 @@ import Icon from '../components/Icon.astro';
       />
       <div class="absolute inset-0 bg-gradient-to-t from-black/75 via-black/30 to-black/10"></div>
     </div>
+    <!-- Saffron glow (muted) -->
+    <div aria-hidden="true" style="position:absolute;width:480px;height:480px;top:-40px;left:-40px;background:radial-gradient(circle,rgba(240,165,0,0.22),transparent 65%);animation:saffron-pulse-muted 5s ease-in-out infinite;z-index:1;pointer-events:none;"></div>
     <div class="relative z-10 pb-24 px-6 lg:px-12 max-w-7xl mx-auto w-full">
       <span class="font-['Caveat'] text-[#F5B04A] text-xl">For yoga teachers, wellness coaches & guides</span>
       <h1 id="ret-h1" class="font-['Playfair_Display'] text-5xl md:text-7xl font-bold text-white mt-2 leading-tight">
@@ -45,7 +47,7 @@ import Icon from '../components/Icon.astro';
       </div>
       <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
 
-        <div class="bg-white rounded-2xl p-8 shadow-sm hover:shadow-lg transition-shadow duration-300 ret-card">
+        <div class="card bg-white rounded-2xl p-8 shadow-sm hover:shadow-lg transition-shadow duration-300 ret-card">
           <div class="w-14 h-14 rounded-xl bg-[#3A5C3A]/10 flex items-center justify-center mb-6 text-[#3A5C3A]">
             <Icon name="meditation" class="w-7 h-7" />
           </div>
@@ -54,7 +56,7 @@ import Icon from '../components/Icon.astro';
           <p class="text-[#4A3728] text-sm italic">Morning yoga, silent meals, outdoor sessions, healing baths in the river.</p>
         </div>
 
-        <div class="bg-white rounded-2xl p-8 shadow-sm hover:shadow-lg transition-shadow duration-300 ret-card">
+        <div class="card bg-white rounded-2xl p-8 shadow-sm hover:shadow-lg transition-shadow duration-300 ret-card">
           <div class="w-14 h-14 rounded-xl bg-[#D4A827]/10 flex items-center justify-center mb-6 text-[#D4A827]">
             <Icon name="mandala" class="w-7 h-7" />
           </div>
@@ -63,7 +65,7 @@ import Icon from '../components/Icon.astro';
           <p class="text-[#4A3728] text-sm italic">Satsang, mantra practice, contemplative walks, fasting-friendly vegetarian food.</p>
         </div>
 
-        <div class="bg-white rounded-2xl p-8 shadow-sm hover:shadow-lg transition-shadow duration-300 ret-card">
+        <div class="card bg-white rounded-2xl p-8 shadow-sm hover:shadow-lg transition-shadow duration-300 ret-card">
           <div class="w-14 h-14 rounded-xl bg-[#E8871A]/10 flex items-center justify-center mb-6 text-[#E8871A]">
             <Icon name="people" class="w-7 h-7" />
           </div>
