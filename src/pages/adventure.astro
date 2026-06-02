@@ -11,8 +11,18 @@ import Icon from '../components/Icon.astro';
 
   <!-- HERO -->
   <section class="relative h-[70vh] min-h-[500px] flex items-end overflow-hidden">
-    <canvas id="adv-canvas" class="absolute inset-0 w-full h-full" style="display:block;"></canvas>
-    <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent"></div>
+    <!-- Background photo (preserved) -->
+    <div class="absolute inset-0">
+      <img
+        src="/images/adventure-river-swimming-group.jpg"
+        alt="Group swimming in the river near Mitraay Resort"
+        class="w-full h-full object-cover"
+      />
+    </div>
+    <!-- Water ripple canvas overlay -->
+    <canvas id="adv-canvas" style="position:absolute;top:0;left:0;width:100%;height:100%;z-index:1;pointer-events:none;display:block;"></canvas>
+    <!-- Gradient overlay (above canvas) -->
+    <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-black/20" style="z-index:2;"></div>
     <div class="relative z-10 pb-20 px-6 lg:px-12 max-w-7xl mx-auto w-full">
       <span class="font-['Caveat'] text-[#F5B04A] text-xl">Outdoors</span>
       <h1 id="adv-h1" class="font-['Playfair_Display'] text-5xl md:text-7xl font-bold text-white mt-2 leading-tight">
@@ -261,16 +271,23 @@ import Icon from '../components/Icon.astro';
   const canvas = document.getElementById('adv-canvas') as HTMLCanvasElement | null;
   if (canvas) {
     const section = canvas.parentElement as HTMLElement;
-    const renderer = new THREE.WebGLRenderer({ canvas, alpha: false, antialias: false });
-    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
 
+    // alpha:true so the canvas is transparent — photo underneath shows through
+    const renderer = new THREE.WebGLRenderer({ canvas, alpha: true, antialias: false });
+    renderer.setClearColor(0x000000, 0);
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 1.5));
+
+    // Perspective camera — plane is intentionally oversized so edge distortion
+    // stays outside the visible viewport rect
     const camera = new THREE.PerspectiveCamera(60, 1, 0.1, 100);
-    camera.position.z = 2;
+    camera.position.z = 1.5;
     const scene = new THREE.Scene();
 
-    const geo = new THREE.PlaneGeometry(5, 4, 100, 80);
+    // 6×5 plane >> viewport at this focal distance, so warped edges are off-screen
+    const geo = new THREE.PlaneGeometry(6, 5, 100, 80);
 
     const mat = new THREE.ShaderMaterial({
+      transparent: true,
       uniforms: {
         uTime:  { value: 0 },
         uMouse: { value: new THREE.Vector2(0.5, 0.5) },
@@ -283,21 +300,29 @@ import Icon from '../components/Icon.astro';
           vUv = uv;
           vec3 pos = position;
           float d = distance(uv, uMouse);
-          pos.z += sin(pos.x * 6.0 + uTime * 1.4) * 0.04
-                 + sin(pos.y * 5.0 + uTime * 1.2) * 0.035
-                 + sin(d * 18.0 - uTime * 2.8) * 0.055 / (d + 0.3);
+          pos.z += sin(pos.x * 5.5 + uTime * 1.3) * 0.05
+                 + sin(pos.y * 4.5 + uTime * 1.1) * 0.04
+                 + sin(d * 16.0 - uTime * 2.8) * 0.06 / (d + 0.35);
           gl_Position = projectionMatrix * modelViewMatrix * vec4(pos, 1.0);
         }
       `,
       fragmentShader: `
         uniform float uTime;
+        uniform vec2  uMouse;
         varying vec2  vUv;
         void main() {
-          float sh = sin(vUv.x * 32.0 + uTime * 1.8) * sin(vUv.y * 22.0 + uTime * 1.5) * 0.04;
-          vec3 c = vec3(0.04 + vUv.y * 0.12 + sh,
-                        0.16 + vUv.y * 0.22 + sh,
-                        0.32 + vUv.y * 0.28 + sh);
-          gl_FragColor = vec4(c, 1.0);
+          float sh = sin(vUv.x * 30.0 + uTime * 1.7)
+                   * sin(vUv.y * 20.0 + uTime * 1.4);
+          float dM = distance(vUv, uMouse);
+          float mRipple = sin(dM * 22.0 - uTime * 3.8) * exp(-dM * 4.0) * 0.6;
+          float intensity = clamp(sh * 0.5 + 0.5 + mRipple, 0.0, 1.0);
+
+          // Dark teal/blue — blends over the river photo
+          vec3 col = mix(vec3(0.0, 0.08, 0.20), vec3(0.03, 0.20, 0.38), intensity);
+
+          // Max alpha ~0.32 so photo is clearly visible underneath
+          float a = clamp(0.08 + intensity * 0.22 + abs(mRipple) * 0.08, 0.04, 0.32);
+          gl_FragColor = vec4(col, a);
         }
       `,
     });
