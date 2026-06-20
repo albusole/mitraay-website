@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Mitraay Check-in</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --forest: #162E20;
+    --saffron: #F0A500;
+    --cream: #F7F3EA;
+    --terracotta: #C1633D;
+    --error: #B23A2E;
+    --success: #3E7D44;
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    font-family: 'DM Sans', sans-serif;
+    background: var(--forest);
+    color: var(--cream);
+    min-height: 100vh;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    padding: 24px 16px 60px;
+  }
+
+  .wrap { width: 100%; max-width: 480px; }
+
+  h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 28px;
+    margin: 0 0 4px;
+    color: var(--cream);
+  }
+
+  .sub {
+    font-size: 14px;
+    opacity: 0.7;
+    margin: 0 0 28px;
+  }
+
+  .card {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 12px;
+    padding: 24px;
+    margin-bottom: 16px;
+  }
+
+  label {
+    display: block;
+    font-size: 13px;
+    font-weight: 500;
+    margin-bottom: 6px;
+    opacity: 0.85;
+  }
+
+  input[type="text"],
+  input[type="password"],
+  input[type="tel"] {
+    width: 100%;
+    padding: 13px 14px;
+    border-radius: 8px;
+    border: 1px solid rgba(255,255,255,0.18);
+    background: rgba(255,255,255,0.06);
+    color: var(--cream);
+    font-size: 16px;
+    font-family: 'DM Sans', sans-serif;
+    margin-bottom: 16px;
+  }
+
+  input::placeholder { color: rgba(247,243,234,0.4); }
+
+  input:focus {
+    outline: 2px solid var(--saffron);
+    outline-offset: 1px;
+  }
+
+  button {
+    width: 100%;
+    padding: 14px;
+    border-radius: 8px;
+    border: none;
+    background: var(--saffron);
+    color: var(--forest);
+    font-size: 15px;
+    font-weight: 600;
+    font-family: 'DM Sans', sans-serif;
+    cursor: pointer;
+  }
+
+  button:disabled { opacity: 0.5; cursor: not-allowed; }
+  button.secondary {
+    background: transparent;
+    border: 1px solid rgba(255,255,255,0.25);
+    color: var(--cream);
+  }
+
+  .msg {
+    font-size: 14px;
+    padding: 12px 14px;
+    border-radius: 8px;
+    margin-bottom: 16px;
+    display: none;
+  }
+  .msg.show { display: block; }
+  .msg.error { background: rgba(178,58,46,0.18); border: 1px solid var(--error); color: #f3c9c4; }
+  .msg.success { background: rgba(62,125,68,0.18); border: 1px solid var(--success); color: #c8e6cb; }
+  .msg.info { background: rgba(240,165,0,0.12); border: 1px solid var(--saffron); color: var(--saffron); }
+
+  .guest-block {
+    border-top: 1px solid rgba(255,255,255,0.1);
+    padding-top: 16px;
+    margin-top: 16px;
+  }
+  .guest-block:first-of-type { border-top: none; padding-top: 0; margin-top: 0; }
+
+  .guest-title { font-size: 13px; font-weight: 600; color: var(--saffron); margin-bottom: 10px; text-transform: uppercase; letter-spacing: 0.04em; }
+
+  input[type="file"] {
+    width: 100%;
+    margin-bottom: 16px;
+    font-size: 13px;
+    color: var(--cream);
+  }
+
+  .file-label {
+    display: inline-block;
+    padding: 10px 14px;
+    background: rgba(255,255,255,0.08);
+    border: 1px dashed rgba(255,255,255,0.3);
+    border-radius: 8px;
+    font-size: 13px;
+    cursor: pointer;
+    margin-bottom: 16px;
+    width: 100%;
+    text-align: center;
+  }
+  .file-label.has-file { border-color: var(--success); background: rgba(62,125,68,0.12); }
+
+  .section-label {
+    font-family: 'Playfair Display', serif;
+    font-size: 18px;
+    margin: 28px 0 12px;
+    color: var(--saffron);
+  }
+
+  .hint { font-size: 12px; opacity: 0.55; margin-top: -10px; margin-bottom: 16px; }
+
+  .source-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+  }
+
+  .source-btn {
+    width: auto;
+    padding: 12px 10px;
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.18);
+    color: var(--cream);
+    font-size: 13px;
+    font-weight: 500;
+    border-radius: 8px;
+    cursor: pointer;
+  }
+
+  .source-btn.selected {
+    background: var(--saffron);
+    color: var(--forest);
+    border-color: var(--saffron);
+    font-weight: 600;
+  }
+
+  #app { display: none; }
+  #gate { display: block; }
+
+  .spinner {
+    display: inline-block;
+    width: 14px; height: 14px;
+    border: 2px solid rgba(22,46,32,0.3);
+    border-top-color: var(--forest);
+    border-radius: 50%;
+    animation: spin 0.7s linear infinite;
+    margin-right: 8px;
+    vertical-align: middle;
+  }
+  @keyframes spin { to { transform: rotate(360deg); } }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+
+  <div id="gate">
+    <h1>Mitraay Check-in</h1>
+    <p class="sub">Staff access only</p>
+    <div class="card">
+      <label for="passcodeInput">Enter passcode</label>
+      <input type="password" id="passcodeInput" placeholder="Passcode" autocomplete="off">
+      <div class="msg error" id="gateError">Incorrect passcode. Try again.</div>
+      <button id="gateBtn" onclick="verifyPasscode()">Unlock</button>
+    </div>
+  </div>
+
+  <div id="app">
+    <h1>Guest Check-in</h1>
+    <p class="sub">Up to 6 guests per booking</p>
+
+    <div class="card">
+      <label for="couponCode">Coupon code (optional)</label>
+      <input type="text" id="couponCode" placeholder="e.g. MITR-7QXJ4K" style="text-transform:uppercase">
+      <button class="secondary" onclick="checkCoupon()" style="margin-bottom:10px;">Check code</button>
+      <div class="msg" id="couponMsg"></div>
+    </div>
+
+    <div class="card">
+      <label for="leadName">Lead guest name</label>
+      <input type="text" id="leadName" placeholder="Full name of person checking in">
+
+      <label for="phone1">Phone number 1</label>
+      <input type="tel" id="phone1" placeholder="10-digit mobile number">
+
+      <label for="phone2">Phone number 2 (at least one more required)</label>
+      <input type="tel" id="phone2" placeholder="10-digit mobile number">
+    </div>
+
+    <div class="card">
+      <label>How did they hear about us?</label>
+      <div class="source-grid" id="sourceGrid">
+        <button type="button" class="source-btn" data-source="Friends / Family" onclick="selectSource(this)">Friends / Family</button>
+        <button type="button" class="source-btn" data-source="Instagram" onclick="selectSource(this)">Instagram</button>
+        <button type="button" class="source-btn" data-source="Google Search" onclick="selectSource(this)">Google Search</button>
+        <button type="button" class="source-btn" data-source="WhatsApp forward" onclick="selectSource(this)">WhatsApp forward</button>
+        <button type="button" class="source-btn" data-source="Trekking / Travel partner" onclick="selectSource(this)">Trekking / Travel partner</button>
+        <button type="button" class="source-btn" data-source="Walk-in / saw the property" onclick="selectSource(this)">Walk-in / saw the property</button>
+        <button type="button" class="source-btn" data-source="Other" onclick="selectSource(this)">Other</button>
+      </div>
+      <input type="text" id="sourceOther" placeholder="Specify..." style="display:none; margin-top:10px;">
+    </div>
+
+    <div class="section-label">Guest details</div>
+    <p class="hint">Name and Aadhaar photo required for every guest in the booking, up to 6.</p>
+
+    <div class="card" id="guestsContainer"></div>
+
+    <div class="msg" id="submitMsg"></div>
+    <button id="submitBtn" onclick="submitRegistration()">Complete check-in</button>
+  </div>
+
+</div>
+
+<script>
+  const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzYiMW84REM1P7bmWbk22cnOAuN4_J8kA6xYsu0iZvkH7bKIusbIUG1SOanYE02iRGX/exec';
+
+  // Persistent per-browser client ID for rate limiting, stored in memory only
+  // for this session (no localStorage per artifact rules, but this is a real
+  // hosted page outside the artifact system, so sessionStorage equivalent via
+  // a simple in-memory variable is fine here; regenerates per page load which
+  // is an acceptable tradeoff for a low-traffic internal tool).
+  let clientId = 'staff_' + Math.random().toString(36).slice(2) + Date.now();
+
+  let couponValidated = false;
+  let couponRowChecked = '';
+  let selectedSource = '';
+
+  function selectSource(btn) {
+    document.querySelectorAll('.source-btn').forEach(b => b.classList.remove('selected'));
+    btn.classList.add('selected');
+    selectedSource = btn.dataset.source;
+
+    const otherInput = document.getElementById('sourceOther');
+    if (selectedSource === 'Other') {
+      otherInput.style.display = 'block';
+      otherInput.focus();
+    } else {
+      otherInput.style.display = 'none';
+      otherInput.value = '';
+    }
+  }
+
+  function showMsg(el, type, text) {
+    el.className = 'msg show ' + type;
+    el.textContent = text;
+  }
+  function hideMsg(el) {
+    el.className = 'msg';
+  }
+
+  async function callBackend(payload) {
+    const res = await fetch(SCRIPT_URL, {
+      method: 'POST',
+      headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+      body: JSON.stringify(payload)
+    });
+    return res.json();
+  }
+
+  async function verifyPasscode() {
+    const input = document.getElementById('passcodeInput');
+    const err = document.getElementById('gateError');
+    const btn = document.getElementById('gateBtn');
+    hideMsg(err);
+    btn.disabled = true;
+    btn.innerHTML = '<span class="spinner"></span>Checking...';
+
+    try {
+      const result = await callBackend({ action: 'verifyPasscode', passcode: input.value });
+      if (result.valid) {
+        document.getElementById('gate').style.display = 'none';
+        document.getElementById('app').style.display = 'block';
+        buildGuestBlocks();
+      } else {
+        showMsg(err, 'error', 'Incorrect passcode. Try again.');
+      }
+    } catch (e) {
+      showMsg(err, 'error', 'Could not reach the server. Check internet connection.');
+    } finally {
+      btn.disabled = false;
+      btn.textContent = 'Unlock';
+    }
+  }
+
+  document.getElementById('passcodeInput').addEventListener('keydown', function(e) {
+    if (e.key === 'Enter') verifyPasscode();
+  });
+
+  async function checkCoupon() {
+    const codeInput = document.getElementById('couponCode');
+    const msg = document.getElementById('couponMsg');
+    const code = codeInput.value.trim().toUpperCase();
+    codeInput.value = code;
+
+    if (!code) {
+      hideMsg(msg);
+      couponValidated = false;
+      return;
+    }
+
+    showMsg(msg, 'info', 'Checking...');
+
+    try {
+      const result = await callBackend({ action: 'checkCode', code: code, clientId: clientId });
+      if (result.result === 'valid') {
+        showMsg(msg, 'success', 'Valid code. 10% off accommodation, up to 6 pax.');
+        couponValidated = true;
+        couponRowChecked = code;
+      } else if (result.result === 'already_used') {
+        showMsg(msg, 'error', 'This code has already been redeemed.');
+        couponValidated = false;
+      } else if (result.result === 'expired') {
+        showMsg(msg, 'error', 'This code has expired.');
+        couponValidated = false;
+      } else if (result.result === 'not_found') {
+        showMsg(msg, 'error', 'Code not recognized. Check spelling and try again.');
+        couponValidated = false;
+      } else if (result.result === 'rate_limited') {
+        showMsg(msg, 'error', result.message);
+        couponValidated = false;
+      } else {
+        showMsg(msg, 'error', 'Could not validate code. Try again.');
+        couponValidated = false;
+      }
+    } catch (e) {
+      showMsg(msg, 'error', 'Could not reach the server.');
+      couponValidated = false;
+    }
+  }
+
+  function buildGuestBlocks() {
+    const container = document.getElementById('guestsContainer');
+    let html = '';
+    for (let i = 1; i <= 6; i++) {
+      html += `
+        <div class="guest-block">
+          <div class="guest-title">Guest ${i}${i > 1 ? ' (optional if not part of booking)' : ''}</div>
+          <label for="guestName${i}">Full name</label>
+          <input type="text" id="guestName${i}" placeholder="Full name as on Aadhaar card">
+          <label for="guestAadhar${i}">Aadhaar card photo</label>
+          <label class="file-label" id="fileLabel${i}" for="guestAadhar${i}">Tap to upload photo</label>
+          <input type="file" id="guestAadhar${i}" accept="image/*" capture="environment" style="display:none" onchange="handleFileSelect(${i})">
+        </div>
+      `;
+    }
+    container.innerHTML = html;
+  }
+
+  const fileData = {};
+
+  function handleFileSelect(i) {
+    const input = document.getElementById('guestAadhar' + i);
+    const label = document.getElementById('fileLabel' + i);
+    const file = input.files[0];
+    if (!file) return;
+
+    const reader = new FileReader();
+    reader.onload = function(e) {
+      const base64 = e.target.result.split(',')[1];
+      fileData[i] = { base64: base64, mime: file.type || 'image/jpeg' };
+      label.textContent = 'Photo added: ' + file.name;
+      label.classList.add('has-file');
+    };
+    reader.readAsDataURL(file);
+  }
+
+  async function submitRegistration() {
+    const msg = document.getElementById('submitMsg');
+    const btn = document.getElementById('submitBtn');
+
+    const leadName = document.getElementById('leadName').value.trim();
+    const phone1 = document.getElementById('phone1').value.trim();
+    const phone2 = document.getElementById('phone2').value.trim();
+    const couponCode = document.getElementById('couponCode').value.trim().toUpperCase();
+
+    if (!leadName) {
+      showMsg(msg, 'error', 'Lead guest name is required.');
+      return;
+    }
+    if (!phone1 && !phone2) {
+      showMsg(msg, 'error', 'At least one phone number is required.');
+      return;
+    }
+
+    if (!selectedSource) {
+      showMsg(msg, 'error', 'Please select how the guest heard about us.');
+      return;
+    }
+    const sourceFinal = selectedSource === 'Other'
+      ? ('Other: ' + (document.getElementById('sourceOther').value.trim() || 'unspecified'))
+      : selectedSource;
+
+    const guests = [];
+    let anyGuest = false;
+    for (let i = 1; i <= 6; i++) {
+      const name = document.getElementById('guestName' + i).value.trim();
+      if (name) {
+        anyGuest = true;
+        if (!fileData[i]) {
+          showMsg(msg, 'error', `Guest ${i} (${name}) is missing an Aadhaar photo.`);
+          return;
+        }
+        guests.push({ name: name, aadharBase64: fileData[i].base64, aadharMime: fileData[i].mime });
+      } else {
+        guests.push(null);
+      }
+    }
+
+    if (!anyGuest) {
+      showMsg(msg, 'error', 'At least one guest with name and Aadhaar photo is required.');
+      return;
+    }
+
+    if (couponCode && !couponValidated) {
+      showMsg(msg, 'error', 'Coupon code entered but not checked, or invalid. Tap "Check code" first, or clear the field.');
+      return;
+    }
+
+    btn.disabled = true;
+    btn.innerHTML = '<span class="spinner"></span>Submitting...';
+    showMsg(msg, 'info', 'Uploading details, please wait...');
+
+    try {
+      const result = await callBackend({
+        action: 'submitRegistration',
+        leadName: leadName,
+        phones: [phone1, phone2],
+        guests: guests,
+        couponCode: couponValidated ? couponCode : '',
+        source: sourceFinal,
+        clientId: clientId
+      });
+
+      if (result.result === 'success') {
+        showMsg(msg, 'success', 'Check-in complete. Registration saved.');
+        btn.style.display = 'none';
+      } else if (result.result === 'coupon_invalid_at_submit') {
+        showMsg(msg, 'error', 'Coupon became invalid before submission (it may have just been used elsewhere). Recheck the code and resubmit.');
+      } else {
+        showMsg(msg, 'error', 'Something went wrong. Please try again or contact admin.');
+      }
+    } catch (e) {
+      showMsg(msg, 'error', 'Could not reach the server. Check internet connection and try again.');
+    } finally {
+      btn.disabled = false;
+      if (btn.style.display !== 'none') btn.textContent = 'Complete check-in';
+    }
+  }
+</script>
+
+</body>
+</html>
