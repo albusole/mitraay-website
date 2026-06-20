@@ -300,7 +300,13 @@
       headers: { 'Content-Type': 'text/plain;charset=utf-8' },
       body: JSON.stringify(payload)
     });
-    return res.json();
+    const rawText = await res.text();
+    try {
+      return JSON.parse(rawText);
+    } catch (parseErr) {
+      console.error('Backend did not return valid JSON. Raw response:', rawText);
+      throw new Error('Server returned an unexpected response. Check console for details.');
+    }
   }
 
   async function verifyPasscode() {
